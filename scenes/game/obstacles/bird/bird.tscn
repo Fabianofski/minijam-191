@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bdvxaxg4daff5" path="res://scenes/game/obstacles/bird/bird_wing_0_spr.png" id="3_tbp7n"]
 
 [node name="Obstacle" instance=ExtResource("1_vth8d")]
+speed_multiplier = Vector2(50, 1)
+randomize_flip = true
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, 0)

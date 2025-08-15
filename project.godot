@@ -13,7 +13,6 @@ config_version=5
 config/name="New Game Project"
 run/main_scene="uid://ccx0v61gy2iva"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [audio]
 
@@ -24,6 +23,7 @@ driver/enable_input=true
 
 MicControl="*res://scenes/game/mic_control/mic_control.tscn"
 SignalBus="*res://shared/signal_bus.gd"
+GameManager="*res://scenes/game/game_manager.gd"
 
 [rendering]
 
