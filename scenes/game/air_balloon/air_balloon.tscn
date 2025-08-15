@@ -13,6 +13,9 @@ speed = 200.0
 position = Vector2(0, 19)
 texture = ExtResource("2_xf1nk")
 
-[node name="balloon" type="Sprite2D" parent="."]
-position = Vector2(0, -29)
+[node name="balloon" type="Node2D" parent="."]
+
+[node name="balloon graphics" type="Sprite2D" parent="balloon"]
+position = Vector2(0.153084, -174.928)
+scale = Vector2(2, 2)
 texture = ExtResource("3_ivjlr")
