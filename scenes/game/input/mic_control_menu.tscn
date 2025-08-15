@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://2yc3fqjjaygw"]
+
+[ext_resource type="Script" uid="uid://bja3oxssvvg4m" path="res://scenes/game/input/mic_control_menu.gd" id="1_4qpj4"]
+
+[sub_resource type="Gradient" id="Gradient_5ma71"]
+offsets = PackedFloat32Array(0.392027, 0.707641, 0.986711)
+colors = PackedColorArray(0.15, 1, 0, 1, 1, 0.9, 0, 1, 1, 0, 0, 1)
+
+[node name="MicControlMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qpj4")
+gradient = SubResource("Gradient_5ma71")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -556.0
+offset_top = -11.0
+offset_right = -516.0
+offset_bottom = 12.0
+text = "Mic:"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = -546.0
+offset_top = -282.0
+offset_right = -352.0
+offset_bottom = -249.0
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -542.0
+offset_top = -229.0
+offset_right = -354.0
+offset_bottom = -204.0
+editable = false
+scrollable = false

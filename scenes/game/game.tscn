@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=4 format=3 uid="uid://ccx0v61gy2iva"]
 
-[ext_resource type="PackedScene" uid="uid://dtain8krg62ml" path="res://scenes/game/input/mic_control.tscn" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/input/mic_control_menu.tscn" id="2_7h61r"]
+[ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon.gd" id="3_0sr1o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sul5r"]
 
 [node name="Root" type="Node2D"]
 
-[node name="MicControl" parent="." instance=ExtResource("1_sul5r")]
+[node name="MicControlMenu" parent="." instance=ExtResource("2_7h61r")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AirBalloon" type="Node2D" parent="."]
+script = ExtResource("3_0sr1o")
+bounds = 500.0
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="AirBalloon"]
+scale = Vector2(48.5, 51.5)
+texture = SubResource("PlaceholderTexture2D_sul5r")

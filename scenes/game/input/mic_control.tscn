@@ -1,41 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtain8krg62ml"]
+[gd_scene load_steps=3 format=3 uid="uid://dtain8krg62ml"]
 
 [ext_resource type="Script" uid="uid://b2irnq238n27q" path="res://scenes/game/input/mic_control.gd" id="1_ycsa0"]
-
-[sub_resource type="Gradient" id="Gradient_80nbo"]
-offsets = PackedFloat32Array(0, 0.637931, 0.775862, 1)
-colors = PackedColorArray(0, 0.756863, 0, 1, 0.212644, 0.595921, 0, 1, 0.83, 0.747, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_80nbo"]
 
 [node name="MicControl" type="Node2D"]
 script = ExtResource("1_ycsa0")
-gradient = SubResource("Gradient_80nbo")
+threshold = 0.4
 
 [node name="MicInput" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_80nbo")
 autoplay = true
 bus = &"Record"
-
-[node name="Label" type="Label" parent="."]
-offset_left = -556.0
-offset_top = -11.0
-offset_right = -516.0
-offset_bottom = 12.0
-text = "Mic:"
-
-[node name="OptionButton" type="OptionButton" parent="."]
-offset_left = -546.0
-offset_top = -282.0
-offset_right = -352.0
-offset_bottom = -249.0
-
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = -542.0
-offset_top = -229.0
-offset_right = -354.0
-offset_bottom = -204.0
-editable = false
-scrollable = false
-
-[connection signal="item_selected" from="OptionButton" to="." method="select_device"]

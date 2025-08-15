@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 buses/default_bus_layout="res://shared/audio/default_bus_layout.tres"
 driver/enable_input=true
 
+[autoload]
+
+MicControl="*res://scenes/game/input/mic_control.tscn"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -4,20 +4,13 @@ const MAX_SAMPLES: int = 10
 var record_live_index: int
 var volume_samples: Array = []
 
-@export var gradient: Gradient
-
-@onready var label: Label = $Label
-@onready var devices: OptionButton = $OptionButton
-@onready var slider: HSlider = $HSlider
+var percent: float 
+var db: float
+@export var threshold: float
+@export var amplify: float = 1.0
 
 func _ready() -> void:
 	record_live_index = AudioServer.get_bus_index('Record')
-	for device in AudioServer.get_input_device_list(): 
-		devices.add_item(device)
-
-func select_device(device_idx: int): 
-	var device_name = AudioServer.get_input_device_list()[device_idx]
-	AudioServer.set_input_device(device_name)
 
 func _process(_delta: float) -> void:
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
@@ -27,11 +20,8 @@ func _process(_delta: float) -> void:
 		volume_samples.pop_back()
 
 	var sample_avg = average_array(volume_samples)
-	var db = round(linear_to_db(sample_avg))
-	var percent = (db + 80.0) / 80.0
-	label.text = 'Mic: %sdb' % db
-	slider.value =  percent * 100.0
-	slider.modulate = gradient.sample(percent)
+	db = round(linear_to_db(sample_avg * amplify))
+	percent = (db + 80.0) / 80.0
 
 func average_array(arr: Array) -> float:
 	var avg = 0.0
@@ -39,3 +29,8 @@ func average_array(arr: Array) -> float:
 		avg += arr[i]
 	avg /= arr.size()
 	return avg
+
+func get_blow_strength(): 
+	if percent < threshold: 
+		return 0 
+	return percent
