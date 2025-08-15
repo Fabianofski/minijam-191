@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccx0v61gy2iva"]
+
+[ext_resource type="PackedScene" uid="uid://dtain8krg62ml" path="res://scenes/game/input/mic_control.tscn" id="1_sul5r"]
+
+[node name="Root" type="Node2D"]
+
+[node name="MicControl" parent="." instance=ExtResource("1_sul5r")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
