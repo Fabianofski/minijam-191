@@ -23,6 +23,7 @@ driver/enable_input=true
 [autoload]
 
 MicControl="*res://scenes/game/mic_control/mic_control.tscn"
+SignalBus="*res://shared/signal_bus.gd"
 
 [rendering]
 

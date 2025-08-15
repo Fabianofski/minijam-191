@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 var mouse_pos: Vector2
 var diff: Vector2
@@ -16,3 +16,5 @@ func _process(delta: float) -> void:
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
 
+func _on_body_entered(_body: Node2D) -> void:
+	SignalBus.game_over.emit()
