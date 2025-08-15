@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtain8krg62ml"]
 
-[ext_resource type="Script" uid="uid://b2irnq238n27q" path="res://scenes/game/input/mic_control.gd" id="1_ycsa0"]
+[ext_resource type="Script" uid="uid://b2irnq238n27q" path="res://scenes/game/mic_control/mic_control.gd" id="1_ycsa0"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_80nbo"]
 

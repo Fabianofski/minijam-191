@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://o1jhpwkep6qb"]
+
+[ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
+[ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
+[ext_resource type="Texture2D" uid="uid://cqbh1soyw1ii2" path="res://scenes/game/air_balloon/balloon_popped_spr.png" id="3_ivjlr"]
+
+[node name="AirBalloon" type="Node2D"]
+script = ExtResource("1_851m2")
+bounds = 500.0
+speed = 200.0
+
+[node name="basket" type="Sprite2D" parent="."]
+position = Vector2(0, 19)
+texture = ExtResource("2_xf1nk")
+
+[node name="balloon" type="Sprite2D" parent="."]
+position = Vector2(0, -29)
+texture = ExtResource("3_ivjlr")

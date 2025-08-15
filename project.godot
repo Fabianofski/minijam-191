@@ -22,7 +22,7 @@ driver/enable_input=true
 
 [autoload]
 
-MicControl="*res://scenes/game/input/mic_control.tscn"
+MicControl="*res://scenes/game/mic_control/mic_control.tscn"
 
 [rendering]
 

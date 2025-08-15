@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2yc3fqjjaygw"]
 
-[ext_resource type="Script" uid="uid://bja3oxssvvg4m" path="res://scenes/game/input/mic_control_menu.gd" id="1_4qpj4"]
+[ext_resource type="Script" uid="uid://bja3oxssvvg4m" path="res://scenes/game/mic_control/mic_control_menu.gd" id="1_4qpj4"]
 
 [sub_resource type="Gradient" id="Gradient_5ma71"]
 offsets = PackedFloat32Array(0.392027, 0.707641, 0.986711)

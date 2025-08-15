@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2edejk6rln2"]
+
+[ext_resource type="Texture2D" uid="uid://cqkp8hh1a05lm" path="res://scenes/game/obstacles/obstacle_balloon_spr.png" id="1_l4brk"]
+
+[node name="Obstacle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l4brk")
