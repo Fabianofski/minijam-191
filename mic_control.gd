@@ -4,8 +4,11 @@ const MAX_SAMPLES: int = 10
 var record_live_index: int
 var volume_samples: Array = []
 
+@export var gradient: Gradient
+
 @onready var label: Label = $Label
 @onready var devices: OptionButton = $OptionButton
+@onready var slider: HSlider = $HSlider
 
 func _ready() -> void:
 	record_live_index = AudioServer.get_bus_index('Record')
@@ -24,7 +27,11 @@ func _process(_delta: float) -> void:
 		volume_samples.pop_back()
 
 	var sample_avg = average_array(volume_samples)
-	label.text = 'Mic: %sdb' % round(linear_to_db(sample_avg))
+	var db = round(linear_to_db(sample_avg))
+	var percent = (db + 80.0) / 80.0
+	label.text = 'Mic: %sdb' % db
+	slider.value =  percent * 100.0
+	slider.modulate = gradient.sample(percent)
 
 func average_array(arr: Array) -> float:
 	var avg = 0.0
