@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccx0v61gy2iva"]
+
+[ext_resource type="Script" uid="uid://b2irnq238n27q" path="res://mic_control.gd" id="1_80nbo"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_80nbo"]
+
+[node name="Root" type="Node2D"]
+
+[node name="MicControl" type="Node2D" parent="."]
+script = ExtResource("1_80nbo")
+
+[node name="Label" type="Label" parent="MicControl"]
+offset_left = -556.0
+offset_top = -11.0
+offset_right = -516.0
+offset_bottom = 12.0
+text = "Mic:"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MicControl/Label"]
+stream = SubResource("AudioStreamMicrophone_80nbo")
+autoplay = true
+bus = &"Record"
+
+[node name="OptionButton" type="OptionButton" parent="MicControl"]
+offset_left = -546.0
+offset_top = -282.0
+offset_right = -352.0
+offset_bottom = -249.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="item_selected" from="MicControl/OptionButton" to="MicControl" method="select_device"]
