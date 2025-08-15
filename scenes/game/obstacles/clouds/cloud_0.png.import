@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2rpq08uws4vp"
-path="res://.godot/imported/bird_wing_1_spr.png-0fe13c7e5639991b55646146e249aca5.ctex"
+uid="uid://csfw33eeqgb55"
+path="res://.godot/imported/cloud_0.png-a3bf54bd84c8fb4d51da7a35ae60a6e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game/obstacles/bird_wing_1_spr.png"
-dest_files=["res://.godot/imported/bird_wing_1_spr.png-0fe13c7e5639991b55646146e249aca5.ctex"]
+source_file="res://scenes/game/obstacles/clouds/cloud_0.png"
+dest_files=["res://.godot/imported/cloud_0.png-a3bf54bd84c8fb4d51da7a35ae60a6e6.ctex"]
 
 [params]
 

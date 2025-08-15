@@ -1,20 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=18 format=3 uid="uid://ccx0v61gy2iva"]
 
 [ext_resource type="PackedScene" uid="uid://o1jhpwkep6qb" path="res://scenes/game/air_balloon/air_balloon.tscn" id="2_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_7h61r"]
 [ext_resource type="Script" uid="uid://xwmbvvw1e1nt" path="res://scenes/game/obstacles/obstacle_spawner.gd" id="3_0sr1o"]
+[ext_resource type="Script" uid="uid://bgb7upm6p5q20" path="res://scenes/game/obstacles/obstacle_res.gd" id="3_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://divmcwl68styp" path="res://scenes/game/obstacles/clouds/cloud_0.tscn" id="4_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://ctk44t6j570tc" path="res://scenes/game/lose_screen/lose_menu.tscn" id="4_kelw5"]
+[ext_resource type="PackedScene" uid="uid://gdeobq35row7" path="res://scenes/game/obstacles/clouds/cloud_1.tscn" id="5_4j704"]
+[ext_resource type="PackedScene" uid="uid://dt0537aou11yd" path="res://scenes/game/obstacles/clouds/cloud_2.tscn" id="6_kp23o"]
+[ext_resource type="PackedScene" uid="uid://cvwtk3mq6w3p0" path="res://scenes/game/obstacles/clouds/cloud_3.tscn" id="7_5jirj"]
+[ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="8_4j704"]
+[ext_resource type="PackedScene" uid="uid://bbjlrjxkwkk3r" path="res://scenes/game/obstacles/bird/bird.tscn" id="8_kp23o"]
+
+[sub_resource type="Resource" id="Resource_vaxfo"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("4_2a8rs")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
+
+[sub_resource type="Resource" id="Resource_ftsea"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("5_4j704")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
+
+[sub_resource type="Resource" id="Resource_otnwt"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("6_kp23o")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
+
+[sub_resource type="Resource" id="Resource_3xj4h"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("7_5jirj")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
+
+[sub_resource type="Resource" id="Resource_kp23o"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("8_4j704")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
+
+[sub_resource type="Resource" id="Resource_5jirj"]
+script = ExtResource("3_lfrn8")
+Prefab = ExtResource("8_kp23o")
+Min_spawn_delay = 1.0
+Max_spawn_delay = 3.0
+metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="AirBalloon" parent="." instance=ExtResource("2_0sr1o")]
+[node name="DecorationSpawner" type="Node2D" parent="."]
+position = Vector2(0, 488)
+script = ExtResource("3_0sr1o")
+bounds_x = 500.0
+slots = 8
+obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
 
 [node name="ObstacleSpawner" type="Node2D" parent="."]
 position = Vector2(0, 244)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
+obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj")])
+
+[node name="AirBalloon" parent="." instance=ExtResource("2_0sr1o")]
 
 [node name="MicControlMenu" parent="." instance=ExtResource("2_7h61r")]
 

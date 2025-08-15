@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx7ixpdidokq8"
-path="res://.godot/imported/bird_spr.png-7e0903f9c08f8b80893f6fad610cfeab.ctex"
+path="res://.godot/imported/bird_spr.png-b3366059157a566e389aa9e2c61569c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game/obstacles/bird_spr.png"
-dest_files=["res://.godot/imported/bird_spr.png-7e0903f9c08f8b80893f6fad610cfeab.ctex"]
+source_file="res://scenes/game/obstacles/bird/bird_spr.png"
+dest_files=["res://.godot/imported/bird_spr.png-b3366059157a566e389aa9e2c61569c6.ctex"]
 
 [params]
 

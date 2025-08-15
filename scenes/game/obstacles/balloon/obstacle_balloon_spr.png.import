@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqkp8hh1a05lm"
-path="res://.godot/imported/obstacle_balloon_spr.png-b7395baa839dca8d11334c42dc0c5edd.ctex"
+path="res://.godot/imported/obstacle_balloon_spr.png-486c777a06abe68cede27e2b6b6f622e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game/obstacles/obstacle_balloon_spr.png"
-dest_files=["res://.godot/imported/obstacle_balloon_spr.png-b7395baa839dca8d11334c42dc0c5edd.ctex"]
+source_file="res://scenes/game/obstacles/balloon/obstacle_balloon_spr.png"
+dest_files=["res://.godot/imported/obstacle_balloon_spr.png-486c777a06abe68cede27e2b6b6f622e.ctex"]
 
 [params]
 

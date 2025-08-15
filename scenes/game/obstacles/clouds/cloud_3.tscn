@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvwtk3mq6w3p0"]
+
+[ext_resource type="PackedScene" uid="uid://dt0537aou11yd" path="res://scenes/game/obstacles/clouds/cloud_2.tscn" id="1_xjsfb"]
+[ext_resource type="Texture2D" uid="uid://dq1yecl1u07if" path="res://scenes/game/obstacles/clouds/cloud_3.png" id="2_d6pvo"]
+
+[node name="Obstacle" instance=ExtResource("1_xjsfb")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_d6pvo")
