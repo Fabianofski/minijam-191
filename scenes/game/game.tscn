@@ -15,29 +15,29 @@
 [sub_resource type="Resource" id="Resource_vaxfo"]
 script = ExtResource("3_lfrn8")
 Prefab = ExtResource("4_2a8rs")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+Min_spawn_delay = 3.0
+Max_spawn_delay = 8.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_ftsea"]
 script = ExtResource("3_lfrn8")
 Prefab = ExtResource("5_4j704")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+Min_spawn_delay = 3.0
+Max_spawn_delay = 8.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_otnwt"]
 script = ExtResource("3_lfrn8")
 Prefab = ExtResource("6_kp23o")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+Min_spawn_delay = 3.0
+Max_spawn_delay = 8.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_3xj4h"]
 script = ExtResource("3_lfrn8")
 Prefab = ExtResource("7_5jirj")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+Min_spawn_delay = 3.0
+Max_spawn_delay = 8.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_kp23o"]
@@ -59,14 +59,41 @@ metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="DecorationSpawner" type="Node2D" parent="."]
-position = Vector2(0, 488)
+position = Vector2(0, 400)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
-slots = 8
+slots = 5
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
 
+[node name="Obstacle" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+position = Vector2(-127, -602)
+
+[node name="Obstacle2" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+position = Vector2(-400, -149)
+
+[node name="Obstacle3" parent="DecorationSpawner" instance=ExtResource("5_4j704")]
+position = Vector2(200, -231)
+randomize_brightness = false
+randomize_size = false
+randomize_flip = false
+
+[node name="Obstacle4" parent="DecorationSpawner" instance=ExtResource("6_kp23o")]
+position = Vector2(-322, -433)
+randomize_brightness = false
+randomize_size = false
+randomize_flip = false
+
+[node name="Obstacle5" parent="DecorationSpawner" instance=ExtResource("7_5jirj")]
+position = Vector2(326, -467)
+randomize_brightness = false
+randomize_size = false
+randomize_flip = false
+
+[node name="Obstacle6" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+position = Vector2(388, -46)
+
 [node name="ObstacleSpawner" type="Node2D" parent="."]
-position = Vector2(0, 244)
+position = Vector2(0, 400)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj")])

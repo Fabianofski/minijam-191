@@ -7,6 +7,9 @@
 script = ExtResource("1_lr08q")
 destroy_bounds = -500.0
 speed_multiplier = 30.0
+randomize_brightness = true
+randomize_size = true
+randomize_flip = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
