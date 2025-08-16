@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 func start_game(): 
 	game_started = true
 	current_speed = 80
+	SignalBus.game_start.emit()
 
 func reset():
 	game_started = false 

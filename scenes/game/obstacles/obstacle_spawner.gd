@@ -8,6 +8,9 @@ var rng = RandomNumberGenerator.new()
 var positions: Array = []
 
 func _ready() -> void:
+	SignalBus.game_start.connect(game_start)
+
+func game_start() -> void:
 	rng.randomize()
 	refill_positions()
 	for obstacle in obstacles:
@@ -28,7 +31,8 @@ func spawn_new_obstacle(obstacle: Obstacle, spawn_timer: Timer) -> void:
 func start_spawn_timer(obstacle: Obstacle, spawn_timer: Timer) -> void:
 	var min_spawn_delay = obstacle.Min_spawn_delay
 	var max_spawn_delay = obstacle.Max_spawn_delay
-	spawn_timer.wait_time = rng.randf_range(min_spawn_delay, max_spawn_delay)
+	var wait_time = rng.randf_range(min_spawn_delay, max_spawn_delay)
+	spawn_timer.wait_time = wait_time / pow(GameManager.current_speed, 0.02)
 	spawn_timer.start()
 
 func refill_positions() -> void:
