@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=8 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
 [ext_resource type="Shader" uid="uid://bfs3w2huh8838" path="res://scenes/game/air_balloon/air_balloon.gdshader" id="3_4uhn6"]
 [ext_resource type="Texture2D" uid="uid://cqbh1soyw1ii2" path="res://scenes/game/air_balloon/balloon_popped_spr.png" id="3_ivjlr"]
+[ext_resource type="Texture2D" uid="uid://dt5ll1eittct6" path="res://scenes/game/air_balloon/balloon_spr.png" id="4_4uhn6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaeym"]
 radius = 36.0
@@ -21,6 +22,7 @@ shader_parameter/fixed_edge_range = 0.2
 script = ExtResource("1_851m2")
 bounds = 500.0
 speed = 200.0
+popped_tex = ExtResource("3_ivjlr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
@@ -52,21 +54,21 @@ position = Vector2(34, 1)
 [node name="balloon" type="Node2D" parent="."]
 position = Vector2(0, -1)
 
-[node name="balloon graphics" type="TextureRect" parent="balloon"]
+[node name="balloon_graphics" type="TextureRect" parent="balloon"]
 material = SubResource("ShaderMaterial_o6u2h")
 offset_left = -147.0
 offset_top = -329.0
 offset_right = -7.0
 offset_bottom = -189.0
 scale = Vector2(2, 2)
-texture = ExtResource("3_ivjlr")
+texture = ExtResource("4_4uhn6")
 metadata/_edit_use_anchors_ = true
 
-[node name="AttachL" type="Node2D" parent="balloon/balloon graphics"]
+[node name="AttachL" type="Node2D" parent="balloon/balloon_graphics"]
 position = Vector2(62, 135)
 scale = Vector2(0.5, 0.5)
 
-[node name="AttachR" type="Node2D" parent="balloon/balloon graphics"]
+[node name="AttachR" type="Node2D" parent="balloon/balloon_graphics"]
 position = Vector2(75.5, 135)
 scale = Vector2(0.5, 0.5)
 
