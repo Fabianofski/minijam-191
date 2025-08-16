@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://j0gptsyrjoyg"
-path="res://.godot/imported/Lexend-Black.ttf-8d7d3b796744d06c8b578c2e95a67dce.fontdata"
+path="res://.godot/imported/Lexend-Black.ttf-f3f1e8abc8c1a376c62235ba6722af82.fontdata"
 
 [deps]
 
-source_file="res://shared/Lexend-Black.ttf"
-dest_files=["res://.godot/imported/Lexend-Black.ttf-8d7d3b796744d06c8b578c2e95a67dce.fontdata"]
+source_file="res://shared/fonts/Lexend-Black.ttf"
+dest_files=["res://.godot/imported/Lexend-Black.ttf-f3f1e8abc8c1a376c62235ba6722af82.fontdata"]
 
 [params]
 
