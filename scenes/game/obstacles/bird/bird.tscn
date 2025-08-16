@@ -31,4 +31,8 @@ texture = ExtResource("2_an0dm")
 position = Vector2(11, -3)
 sprite_frames = SubResource("SpriteFrames_70gd6")
 autoplay = "default"
-frame_progress = 0.714263
+frame_progress = 0.908699
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3, 0)
+scale = Vector2(0.73943, 0.429184)

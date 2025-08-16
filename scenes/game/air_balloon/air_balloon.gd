@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
 	# Balloon rotation
-	balloon_graphics.look_at((get_local_mouse_position().rotated(PI/2))*-1)
+	balloon_graphics.look_at((get_local_mouse_position().rotated(PI/2)) * -1)
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()

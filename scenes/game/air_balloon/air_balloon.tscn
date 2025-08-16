@@ -22,9 +22,10 @@ position = Vector2(0, 19)
 texture = ExtResource("2_xf1nk")
 
 [node name="balloon" type="Node2D" parent="."]
+position = Vector2(0, 49)
 
 [node name="balloon graphics" type="Sprite2D" parent="balloon"]
-position = Vector2(0.153084, -174.928)
+position = Vector2(0, -189)
 scale = Vector2(2, 2)
 texture = ExtResource("3_ivjlr")
 
