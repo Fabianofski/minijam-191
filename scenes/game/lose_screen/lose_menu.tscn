@@ -1,10 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctk44t6j570tc"]
+[gd_scene load_steps=10 format=3 uid="uid://ctk44t6j570tc"]
 
 [ext_resource type="Script" uid="uid://bidpdj8tsjkdj" path="res://scenes/game/lose_screen/lose.gd" id="1_o1skj"]
 [ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_wcv5r"]
+[ext_resource type="Texture2D" uid="uid://karg46wlpnyn" path="res://scenes/game/lose_screen/btn_0.png" id="3_sqqk8"]
+[ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="4_c1g0d"]
+[ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="5_c1g0d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
+texture = ExtResource("3_sqqk8")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6txxq"]
+texture = ExtResource("4_c1g0d")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="Theme" id="Theme_qdu62"]
+Button/styles/focus = SubResource("StyleBoxTexture_r0pju")
+Button/styles/hover = SubResource("StyleBoxTexture_6txxq")
+Button/styles/normal = SubResource("StyleBoxTexture_r0pju")
+Button/styles/pressed = SubResource("StyleBoxTexture_6txxq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qdu62"]
+font = ExtResource("5_c1g0d")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="LoseMenu" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +60,7 @@ offset_right = 123.5
 offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "YOU LOSE"
+text = "YOU LOST"
 label_settings = ExtResource("2_wcv5r")
 horizontal_alignment = 1
 
@@ -46,12 +71,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 36.0
-offset_right = 33.0
-offset_bottom = 67.0
+offset_left = -90.0
+offset_top = 26.0
+offset_right = 91.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qdu62")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
+label_settings = SubResource("LabelSettings_qdu62")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="restart"]

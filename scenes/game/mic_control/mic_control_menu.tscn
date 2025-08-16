@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://2yc3fqjjaygw"]
+[gd_scene load_steps=17 format=3 uid="uid://2yc3fqjjaygw"]
 
 [ext_resource type="Script" uid="uid://bja3oxssvvg4m" path="res://scenes/game/mic_control/mic_control_menu.gd" id="1_4qpj4"]
 [ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_dyvu3"]
+[ext_resource type="FontFile" uid="uid://j0gptsyrjoyg" path="res://shared/fonts/Lexend-Black.ttf" id="2_ql6m3"]
+[ext_resource type="Texture2D" uid="uid://karg46wlpnyn" path="res://scenes/game/lose_screen/btn_0.png" id="2_yl0kg"]
+[ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="3_ql6m3"]
+[ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="4_sbatb"]
 
 [sub_resource type="Gradient" id="Gradient_5ma71"]
 offsets = PackedFloat32Array(0.392027, 0.707641, 0.986711)
 colors = PackedColorArray(0.15, 1, 0, 1, 1, 0.9, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sbatb"]
+font = ExtResource("2_ql6m3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyvu3"]
 
@@ -13,7 +20,34 @@ colors = PackedColorArray(0.15, 1, 0, 1, 1, 0.9, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi6cm"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_jb7qn"]
+font = ExtResource("2_ql6m3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
+texture = ExtResource("2_yl0kg")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6txxq"]
+texture = ExtResource("3_ql6m3")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="Theme" id="Theme_jb7qn"]
+Button/styles/focus = SubResource("StyleBoxTexture_r0pju")
+Button/styles/hover = SubResource("StyleBoxTexture_6txxq")
+Button/styles/normal = SubResource("StyleBoxTexture_r0pju")
+Button/styles/pressed = SubResource("StyleBoxTexture_6txxq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_47e23"]
+font = ExtResource("4_sbatb")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
 [node name="MicControlMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,9 +88,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
-offset_top = -58.0
+offset_top = -42.0
 offset_right = 94.0
-offset_bottom = -33.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 editable = false
@@ -68,6 +102,7 @@ offset_top = -20.0
 offset_right = 82.0
 offset_bottom = 3.0
 text = "Threshold:"
+label_settings = SubResource("LabelSettings_sbatb")
 
 [node name="ThresholdSlider" type="HSlider" parent="."]
 layout_mode = 1
@@ -77,9 +112,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
-offset_top = -58.0
+offset_top = -42.0
 offset_right = 94.0
-offset_bottom = -33.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxEmpty_dyvu3")
@@ -97,9 +132,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
-offset_top = -12.0
+offset_top = 12.0
 offset_right = 94.0
-offset_bottom = 13.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 min_value = -1.0
@@ -111,7 +146,8 @@ layout_mode = 1
 offset_top = -20.0
 offset_right = 82.0
 offset_bottom = 3.0
-text = "Amplify:"
+text = "Amplify input:"
+label_settings = SubResource("LabelSettings_jb7qn")
 
 [node name="BlowStrenghtLabel" type="Label" parent="."]
 layout_mode = 1
@@ -121,12 +157,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -91.0
-offset_top = 16.0
-offset_right = 50.0
-offset_bottom = 39.0
+offset_top = 48.0
+offset_right = 94.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Blow Strength: 0%"
+label_settings = SubResource("LabelSettings_sbatb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -135,13 +174,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = 57.0
-offset_right = 16.0
-offset_bottom = 88.0
+offset_left = -37.0
+offset_top = 80.0
+offset_right = 38.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jb7qn")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.5
+offset_right = 20.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "OK"
+label_settings = SubResource("LabelSettings_47e23")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
