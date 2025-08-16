@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=23 format=3 uid="uid://ccx0v61gy2iva"]
 
 [ext_resource type="PackedScene" uid="uid://o1jhpwkep6qb" path="res://scenes/game/air_balloon/air_balloon.tscn" id="2_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_7h61r"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://gdeobq35row7" path="res://scenes/game/obstacles/clouds/cloud_1.tscn" id="5_4j704"]
 [ext_resource type="PackedScene" uid="uid://dt0537aou11yd" path="res://scenes/game/obstacles/clouds/cloud_2.tscn" id="6_kp23o"]
 [ext_resource type="PackedScene" uid="uid://cvwtk3mq6w3p0" path="res://scenes/game/obstacles/clouds/cloud_3.tscn" id="7_5jirj"]
+[ext_resource type="Texture2D" uid="uid://b0hdpd0v6mfrk" path="res://shared/textures/paper_tex_0.jpg" id="7_vaxfo"]
 [ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="8_4j704"]
 [ext_resource type="PackedScene" uid="uid://bbjlrjxkwkk3r" path="res://scenes/game/obstacles/bird/bird.tscn" id="8_kp23o"]
+[ext_resource type="Texture2D" uid="uid://c2krkdvsfcn4k" path="res://shared/textures/paper_tex_1.jpg" id="13_vaxfo"]
+[ext_resource type="Script" uid="uid://5bqysifm3ti3" path="res://shared/textures/foreground_overlay.gd" id="14_ftsea"]
 
 [sub_resource type="Resource" id="Resource_vaxfo"]
 script = ExtResource("3_lfrn8")
@@ -54,9 +57,44 @@ Min_spawn_delay = 1.0
 Max_spawn_delay = 3.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
+[sub_resource type="Shader" id="Shader_vaxfo"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform float opacity = 1.0;
+
+vec4 overlay(vec4 base, vec4 blend){
+	vec4 limit = step(0.5, base);
+	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+
+void fragment() {
+    vec4 baseColor = texture(TEXTURE, UV);
+    vec4 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+    COLOR = overlay(baseColor / opacity, screenColor * opacity);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnwt"]
+shader = SubResource("Shader_vaxfo")
+shader_parameter/opacity = 1.4
+
 [node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background Overlay" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vaxfo")
 
 [node name="DecorationSpawner" type="Node2D" parent="."]
 position = Vector2(0, 400)
@@ -103,3 +141,20 @@ obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubRes
 [node name="MicControlMenu" parent="." instance=ExtResource("2_7h61r")]
 
 [node name="LoseMenu" parent="." instance=ExtResource("4_kelw5")]
+
+[node name="Foreground Overlay" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_otnwt")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -745.0
+offset_top = -745.0
+offset_right = 1255.0
+offset_bottom = 1255.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_vaxfo")
+script = ExtResource("14_ftsea")
