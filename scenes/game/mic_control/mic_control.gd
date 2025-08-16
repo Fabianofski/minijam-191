@@ -30,7 +30,7 @@ func average_array(arr: Array) -> float:
 	avg /= arr.size()
 	return avg
 
-func get_blow_strength(): 
-	if percent < threshold: 
-		return 0 
-	return percent
+func get_blow_strength():
+	if percent <= threshold:
+		return 0
+	return (percent - threshold) / (1 - threshold)

@@ -7,13 +7,17 @@ extends Control
 @onready var slider: HSlider = $HSlider
 
 func _ready() -> void:
-	for device in AudioServer.get_input_device_list(): 
-		devices.add_item(device)
+	update_device_list()
 
 func _process(_delta: float) -> void:
-	label.text = 'Blow Strength: %s%%' % (MicControl.get_blow_strength() * 100)
+	label.text = 'Blow Strength: %s%%' % roundf(MicControl.get_blow_strength() * 100)
 	slider.value =  MicControl.percent * 100.0
 	slider.modulate = gradient.sample(MicControl.percent)
+
+func update_device_list(): 
+	devices.clear()
+	for device in AudioServer.get_input_device_list(): 
+		devices.add_item(device)
 
 func select_device(device_idx: int): 
 	var device_name = AudioServer.get_input_device_list()[device_idx]
@@ -22,5 +26,8 @@ func select_device(device_idx: int):
 func set_threshold(threshold: float): 
 	MicControl.threshold = threshold 
 
-func set_amplify(amplify: float): 
-	MicControl.amplify = amplify
+func set_amplify(amplify: float):
+	if amplify <= 0.0:
+		MicControl.amplify = (amplify + 1.0) * 1.0
+	else:
+		MicControl.amplify = 1.0 + amplify * 5.0
