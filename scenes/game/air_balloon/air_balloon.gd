@@ -7,6 +7,7 @@ var diff: Vector2
 @export var speed: float
 
 @onready var balloon_graphics: Node2D = $balloon
+@onready var balloon_shader: TextureRect = $"balloon/balloon graphics"
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -17,8 +18,9 @@ func _process(delta: float) -> void:
 	var blow_strength = MicControl.get_blow_strength()
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
-	# Balloon rotation
+	# Balloon rotation and movement
 	balloon_graphics.look_at((get_local_mouse_position().rotated(PI/2)) * -1)
+	balloon_shader.material.set_shader_parameter("speed", 20.0 + abs(MicControl.get_blow_strength()))
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()

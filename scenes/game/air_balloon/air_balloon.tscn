@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=7 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
+[ext_resource type="Shader" uid="uid://bfs3w2huh8838" path="res://scenes/game/air_balloon/air_balloon.gdshader" id="3_4uhn6"]
 [ext_resource type="Texture2D" uid="uid://cqbh1soyw1ii2" path="res://scenes/game/air_balloon/balloon_popped_spr.png" id="3_ivjlr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaeym"]
 radius = 36.0
 height = 72.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6u2h"]
+shader = ExtResource("3_4uhn6")
+shader_parameter/amplitude = 2.0
+shader_parameter/frequency = 2.0
+shader_parameter/speed = 2.0
+shader_parameter/pole_side = 4
+shader_parameter/fixed_edge_range = 0.2
 
 [node name="AirBalloon" type="Area2D"]
 script = ExtResource("1_851m2")
@@ -24,8 +33,12 @@ texture = ExtResource("2_xf1nk")
 [node name="balloon" type="Node2D" parent="."]
 position = Vector2(0, 49)
 
-[node name="balloon graphics" type="Sprite2D" parent="balloon"]
-position = Vector2(0, -189)
+[node name="balloon graphics" type="TextureRect" parent="balloon"]
+material = SubResource("ShaderMaterial_o6u2h")
+offset_left = -147.0
+offset_top = -329.0
+offset_right = -7.0
+offset_bottom = -189.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_ivjlr")
 
