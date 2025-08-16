@@ -43,6 +43,12 @@ position = Vector2(0, -1)
 position = Vector2(0, -31)
 texture = ExtResource("2_xf1nk")
 
+[node name="AttachL2" type="Node2D" parent="basket"]
+position = Vector2(-33, 1)
+
+[node name="AttachR2" type="Node2D" parent="basket"]
+position = Vector2(34, 1)
+
 [node name="balloon" type="Node2D" parent="."]
 position = Vector2(0, -1)
 

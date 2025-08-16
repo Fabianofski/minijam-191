@@ -15,6 +15,9 @@ var diff: Vector2
 
 @onready var attach_l: Node2D = $"balloon/balloon graphics/AttachL"
 @onready var attach_r: Node2D = $"balloon/balloon graphics/AttachR"
+@onready var attach_l_2: Node2D = $basket/AttachL2
+@onready var attach_r_2: Node2D = $basket/AttachR2
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -40,6 +43,8 @@ func rotate_and_move(delta: float):
 func set_visual_parameters(): 
 	balloon_shader.material.set_shader_parameter("speed", 20.0 + abs(MicControl.get_blow_strength()))
 
+	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))
+	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
 
