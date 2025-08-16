@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cr0r7nn134qxd"]
 
-[ext_resource type="FontFile" uid="uid://cgvj2tksq1srm" path="res://shared/fonts/PAPER NOTE.otf" id="1_ufqgg"]
+[ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="1_fkw3c"]
 
 [resource]
-font = ExtResource("1_ufqgg")
+font = ExtResource("1_fkw3c")
 font_size = 48
 outline_size = 6
 shadow_size = 3

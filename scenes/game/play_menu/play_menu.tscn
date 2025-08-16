@@ -80,6 +80,9 @@ label_settings = ExtResource("2_17m5x")
 visible = false
 layout_mode = 1
 
+[node name="Label" parent="MicControlMenu/AmpliSlider" index="0"]
+layout_mode = 0
+
 [connection signal="pressed" from="Title/Button" to="." method="start_game"]
 [connection signal="pressed" from="Title/Button2" to="Title" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Title/Button2" to="MicControlMenu" method="set_visible" binds= [true]]
