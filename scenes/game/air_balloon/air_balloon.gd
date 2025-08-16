@@ -21,15 +21,22 @@ func _input(event):
 		diff = (mouse_pos - global_position).normalized()
 
 func _process(delta: float) -> void:
+	rotate_and_move(delta)
+	set_visual_parameters()
+
+func rotate_and_move(delta: float): 
 	var blow_strength = MicControl.get_blow_strength()
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
-	# Balloon rotation and movement
-	balloon_graphics.look_at((get_local_mouse_position().rotated(PI/2)) * -1)
+
+	balloon_graphics.look_at((mouse_pos.rotated(PI/2)) * -1)
+	balloon_graphics.rotation_degrees = clamp(balloon_graphics.rotation_degrees, -110, 110)
+
+func set_visual_parameters(): 
 	balloon_shader.material.set_shader_parameter("speed", 20.0 + abs(MicControl.get_blow_strength()))
-	# String
-	line_l.set_point_position(1, attach_l.position)
-	line_r.set_point_position(1, attach_r.position)
+
+	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
+	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()

@@ -23,25 +23,25 @@ bounds = 500.0
 speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 47)
+position = Vector2(1, -3)
 shape = SubResource("CapsuleShape2D_oaeym")
 
 [node name="LineL" type="Line2D" parent="."]
-visible = false
+position = Vector2(0, -50)
 points = PackedVector2Array(-35, 52, -24, -9)
 width = 1.0
 
 [node name="LineR" type="Line2D" parent="."]
-visible = false
+position = Vector2(0, -50)
 points = PackedVector2Array(37, 50, 6, -9)
 width = 1.0
 
 [node name="basket" type="Sprite2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(0, -31)
 texture = ExtResource("2_xf1nk")
 
 [node name="balloon" type="Node2D" parent="."]
-position = Vector2(0, 49)
+position = Vector2(0, -1)
 
 [node name="balloon graphics" type="TextureRect" parent="balloon"]
 material = SubResource("ShaderMaterial_o6u2h")
@@ -51,6 +51,7 @@ offset_right = -7.0
 offset_bottom = -189.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_ivjlr")
+metadata/_edit_use_anchors_ = true
 
 [node name="AttachL" type="Node2D" parent="balloon/balloon graphics"]
 position = Vector2(62, 135)

@@ -7,17 +7,16 @@ extends Node2D
 @export var randomize_size: bool = false
 @export var randomize_flip: bool = false
 
+@onready var sprite = $Sprite2D
+
 func _ready():
-	var sprite = $Sprite2D
-	var wing = $Sprite2D/AnimatedSprite2D
 	if randomize_speed:
 		speed_multiplier *= randf_range(0.6, 1.4)
 	if randomize_brightness: 
 		sprite.self_modulate.a = randf_range(0.5, 1.0)
 	if randomize_size: 
-		var scale = randf_range(0.6, 1.4)
-		sprite.scale *= scale
-		#wing.scale *= scale ALERT: Somehow broken!!!
+		var _scale = randf_range(0.6, 1.4)
+		sprite.scale *= _scale
 	if randomize_flip: 
 		sprite.flip_h = randf() < 0.5
 		if sprite.flip_h:
