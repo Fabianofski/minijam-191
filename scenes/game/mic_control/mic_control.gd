@@ -8,9 +8,16 @@ var percent: float
 var db: float
 @export var threshold: float
 @export var amplify: float = 1.0
+var blow_btn_pressed = false
 
 func _ready() -> void:
 	record_live_index = AudioServer.get_bus_index('Record')
+
+func _input(event):
+	if event.is_action_pressed("blow"):
+		blow_btn_pressed = true
+	if event.is_action_released("blow"):
+		blow_btn_pressed = false
 
 func _process(_delta: float) -> void:
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
@@ -31,6 +38,9 @@ func average_array(arr: Array) -> float:
 	return avg
 
 func get_blow_strength():
+	if blow_btn_pressed: 
+		return 1
+
 	if percent <= threshold:
 		return 0
 	return (percent - threshold) / (1 - threshold)
