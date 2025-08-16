@@ -73,6 +73,7 @@ text = "BLOWN AWAY"
 label_settings = ExtResource("2_17m5x")
 
 [node name="Logo" type="TextureRect" parent="Title"]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
