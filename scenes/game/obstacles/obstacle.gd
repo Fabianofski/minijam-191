@@ -33,7 +33,7 @@ func _ready():
 		global_position.y = randf_range(global_position.y, destroy_bounds)
 
 func _process(delta: float) -> void:
-	position.y -= delta * GameManager.current_speed * speed_multiplier.y
+	position.y -= delta * GameManager.current_speed * speed_multiplier.y * GameManager.vertical_blow
 	position.x -= delta * speed_multiplier.x 
 
 	if global_position.y <= destroy_bounds: 

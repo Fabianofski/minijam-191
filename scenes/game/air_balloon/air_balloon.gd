@@ -31,8 +31,9 @@ func rotate_and_move(delta: float):
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
 
-	var rot = -Vector2(diff.x, -diff.y).rotated(PI/2).angle()
-	var rot_deg = rad_to_deg(rot)
+	GameManager.vertical_blow = -diff.y * blow_strength + 1
+
+	var rot_deg = abs(rad_to_deg(diff.angle())) - 90
 	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
 	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
 
