@@ -7,6 +7,7 @@ var diff: Vector2
 @export var speed: float
 
 @onready var balloon_graphics: Node2D = $balloon
+@onready var basket_graphics: Node2D = $basket
 @onready var balloon_shader: TextureRect = $"balloon/balloon graphics"
 
 @onready var line_l: Line2D = $LineL
@@ -21,7 +22,8 @@ func _input(event):
 		diff = (mouse_pos - global_position).normalized()
 
 func _process(delta: float) -> void:
-	rotate_and_move(delta)
+	if GameManager.game_started:
+		rotate_and_move(delta)
 	set_visual_parameters()
 
 func rotate_and_move(delta: float): 
@@ -29,8 +31,10 @@ func rotate_and_move(delta: float):
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
 
-	balloon_graphics.rotation = -Vector2(diff.x, -diff.y).rotated(PI/2).angle()
-	balloon_graphics.rotation_degrees = clamp(balloon_graphics.rotation_degrees, -110, 110)
+	var rot = -Vector2(diff.x, -diff.y).rotated(PI/2).angle()
+	var rot_deg = rad_to_deg(rot)
+	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
+	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
 
 func set_visual_parameters(): 
 	balloon_shader.material.set_shader_parameter("speed", 20.0 + abs(MicControl.get_blow_strength()))

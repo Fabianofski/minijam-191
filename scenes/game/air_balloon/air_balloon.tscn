@@ -36,7 +36,10 @@ position = Vector2(0, -50)
 points = PackedVector2Array(37, 50, 6, -9)
 width = 1.0
 
-[node name="basket" type="Sprite2D" parent="."]
+[node name="basket" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="basket" type="Sprite2D" parent="basket"]
 position = Vector2(0, -31)
 texture = ExtResource("2_xf1nk")
 
