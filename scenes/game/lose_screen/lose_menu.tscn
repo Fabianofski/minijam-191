@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctk44t6j570tc"]
 
 [ext_resource type="Script" uid="uid://bidpdj8tsjkdj" path="res://scenes/game/lose_screen/lose.gd" id="1_o1skj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0sr1o"]
-font_size = 36
+[ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_wcv5r"]
 
 [node name="LoseMenu" type="Control"]
 visible = false
@@ -31,14 +29,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.5
-offset_top = -25.0
-offset_right = 86.5
-offset_bottom = 25.0
+offset_left = -123.5
+offset_top = -100.0
+offset_right = 123.5
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "YOU LOSE"
-label_settings = SubResource("LabelSettings_0sr1o")
+label_settings = ExtResource("2_wcv5r")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
@@ -49,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.0
-offset_top = 59.0
+offset_top = 36.0
 offset_right = 33.0
-offset_bottom = 90.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"

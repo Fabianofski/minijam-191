@@ -19,13 +19,16 @@ var diff: Vector2
 @onready var attach_l_2: Node2D = $basket/AttachL2
 @onready var attach_r_2: Node2D = $basket/AttachR2
 
+var game_lost: bool = false
+
+func _ready() -> void:
+	SignalBus.game_start.connect(func(): balloon_shader.texture = popped_tex)
+	SignalBus.game_over.connect(fall_down)
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_pos = get_global_mouse_position()
 		diff = (mouse_pos - global_position).normalized()
-
-	SignalBus.game_start.connect(func(): balloon_shader.texture = popped_tex)
 
 func _process(delta: float) -> void:
 	if GameManager.game_started:
@@ -51,6 +54,13 @@ func set_visual_parameters():
 	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
+
+func fall_down(): 
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(position.x, 1000), 1.5)
+	tween.set_ease(Tween.EASE_IN)
+	balloon_graphics.rotation_degrees = 0
+	basket_graphics.rotation_degrees = 0
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()
