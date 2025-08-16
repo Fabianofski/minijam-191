@@ -57,7 +57,6 @@ func rotate_and_move(delta: float):
 
 func set_visual_parameters(): 
 	var default_wind = 20.0 if GameManager.game_started else 5.0
-	balloon_shader.material.set_shader_parameter("speed", default_wind + abs(MicControl.get_blow_strength()))
 	
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))
 	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
