@@ -26,6 +26,16 @@ speed = 200.0
 position = Vector2(1, 47)
 shape = SubResource("CapsuleShape2D_oaeym")
 
+[node name="LineL" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(-35, 52, -24, -9)
+width = 1.0
+
+[node name="LineR" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(37, 50, 6, -9)
+width = 1.0
+
 [node name="basket" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
 texture = ExtResource("2_xf1nk")
@@ -41,5 +51,13 @@ offset_right = -7.0
 offset_bottom = -189.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_ivjlr")
+
+[node name="AttachL" type="Node2D" parent="balloon/balloon graphics"]
+position = Vector2(62, 135)
+scale = Vector2(0.5, 0.5)
+
+[node name="AttachR" type="Node2D" parent="balloon/balloon graphics"]
+position = Vector2(75.5, 135)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

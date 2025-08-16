@@ -9,6 +9,12 @@ var diff: Vector2
 @onready var balloon_graphics: Node2D = $balloon
 @onready var balloon_shader: TextureRect = $"balloon/balloon graphics"
 
+@onready var line_l: Line2D = $LineL
+@onready var line_r: Line2D = $LineR
+
+@onready var attach_l: Node2D = $"balloon/balloon graphics/AttachL"
+@onready var attach_r: Node2D = $"balloon/balloon graphics/AttachR"
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_pos = get_global_mouse_position()
@@ -21,6 +27,9 @@ func _process(delta: float) -> void:
 	# Balloon rotation and movement
 	balloon_graphics.look_at((get_local_mouse_position().rotated(PI/2)) * -1)
 	balloon_shader.material.set_shader_parameter("speed", 20.0 + abs(MicControl.get_blow_strength()))
+	# String
+	line_l.set_point_position(1, attach_l.position)
+	line_r.set_point_position(1, attach_r.position)
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()
