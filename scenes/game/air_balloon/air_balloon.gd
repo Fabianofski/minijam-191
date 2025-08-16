@@ -13,6 +13,10 @@ var diff: Vector2
 @export var popped_tex: Texture
 @onready var pop_sound: AudioStreamPlayer2D = $Pop
 
+@onready var balloon_shadow_control: Node2D = $Shadow/balloon
+@onready var balloon_shadow_graphics: TextureRect = $Shadow/balloon/balloon_graphics
+@onready var basket_shadow: Node2D = $Shadow/basket
+
 @onready var line_l: Line2D = $LineL
 @onready var line_r: Line2D = $LineR
 
@@ -48,6 +52,9 @@ func rotate_and_move(delta: float):
 	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
 	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
 	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
+	# And now, for the shadow
+	basket_shadow.rotation_degrees = basket_graphics.rotation_degrees
+	balloon_shadow_control.rotation_degrees = balloon_graphics.rotation_degrees
 
 func set_visual_parameters(): 
 	var default_wind = 20.0 if GameManager.game_started else 5.0
@@ -60,6 +67,7 @@ func set_visual_parameters():
 
 func pop_balloon(): 
 	balloon_shader.texture = popped_tex
+	balloon_shadow_graphics.texture = popped_tex
 	pop_sound.play()
 
 func fall_down(): 

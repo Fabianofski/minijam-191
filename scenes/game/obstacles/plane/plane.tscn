@@ -14,6 +14,9 @@ speed_multiplier = Vector2(200, 1)
 randomize_flip = true
 start_on_the_sides = true
 
+[node name="Shadow" parent="." index="0"]
+position = Vector2(16, 26)
+
 [node name="Shadow" parent="Shadow" index="0"]
 texture = ExtResource("2_pvhe3")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=14 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
@@ -10,6 +10,79 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaeym"]
 radius = 36.0
 height = 72.0
+
+[sub_resource type="Shader" id="Shader_xe7hi"]
+code = "shader_type canvas_item;
+
+// With thanks to https://godotshaders.com/shader/2d-flag-wave-animetion-shader/
+uniform float darkness       = 1.0;
+
+uniform float amplitude       : hint_range(0.0, 20.0) = 5.0;   // Controls the height of the wave.
+uniform float frequency       : hint_range(-10.0, 10.0) = 3.0;  // Sets the number of waves (negative values flip the wave).
+uniform float speed           : hint_range(0.0, 5.0) = 1.0;    // Adjusts how fast the wave moves.
+// 'pole_side' indicates where the flag is attached (the wave is reduced there):
+// 0 = Left, 1 = Right, 2 = Top, 3 = Bottom.
+uniform int pole_side         = 0;
+uniform float fixed_edge_range: hint_range(0.0, 1.0) = 0.2;    // Determines the area where the wave is damped.
+
+void fragment() {
+    vec2 distorted_uv = UV; // Start with the original UV coordinates.
+    float wave;             // Will hold the calculated wave offset.
+    float influence;        // Factor that reduces the wave effect near the pole.
+
+    // For top or bottom pole attachments, the wave moves vertically.
+    if (pole_side == 2 || pole_side == 3) {
+        // Use UV.x to drive the wave calculation and apply the offset along y.
+        wave = sin(UV.x * frequency + TIME * speed) * amplitude * 0.01;
+        if (pole_side == 2) {
+            // If the flag is attached at the top:
+            // Reduce the wave effect near the top edge (UV.y near 1).
+            influence = 1.0 - smoothstep(1.0 - fixed_edge_range, 1.0, UV.x);
+        } else {
+            // If the flag is attached at the bottom:
+            // Reduce the wave effect near the bottom edge (UV.y near 0).
+            influence = smoothstep(0.0, fixed_edge_range, UV.x);
+        }
+        // Apply the calculated vertical displacement.
+        distorted_uv.y += wave * influence;
+    } else {
+        // For left or right pole attachments, the wave moves horizontally.
+        // Use UV.y to drive the wave calculation and apply the offset along x.
+        wave = sin(UV.y * frequency + TIME * speed) * amplitude * 0.01;
+        if (pole_side == 0) {
+            // If the flag is attached on the left:
+            // Reduce the wave effect near the left edge (UV.x near 0).
+            influence = smoothstep(0.0, fixed_edge_range, UV.y);
+        } else {
+            // If the flag is attached on the right:
+            // Reduce the wave effect near the right edge (UV.x near 1).
+            influence = 1.0 - smoothstep(1.0 - fixed_edge_range, 1.0, UV.y);
+        }
+        // Apply the calculated horizontal displacement.
+        distorted_uv.x += wave * influence;
+    }
+
+    // Retrieve the texture color from the modified UV coordinates.
+    vec4 tex_color = texture(TEXTURE, distorted_uv);
+
+    // Discard pixels that are nearly transparent.
+    if (tex_color.a < 0.1) {
+        discard;
+    }
+
+    // Output the final color.
+    COLOR = tex_color / darkness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwiuu"]
+shader = SubResource("Shader_xe7hi")
+shader_parameter/darkness = 10.0
+shader_parameter/amplitude = 2.0
+shader_parameter/frequency = 2.0
+shader_parameter/speed = 2.0
+shader_parameter/pole_side = 4
+shader_parameter/fixed_edge_range = 0.2
 
 [sub_resource type="Shader" id="Shader_xj65t"]
 code = "shader_type canvas_item;
@@ -86,6 +159,7 @@ shader_parameter/fixed_edge_range = 0.2
 code = "shader_type canvas_item;
 
 // With thanks to https://godotshaders.com/shader/2d-flag-wave-animetion-shader/
+uniform float darkness       = 1.0;
 
 uniform float amplitude       : hint_range(0.0, 20.0) = 5.0;   // Controls the height of the wave.
 uniform float frequency       : hint_range(-10.0, 10.0) = 3.0;  // Sets the number of waves (negative values flip the wave).
@@ -141,12 +215,13 @@ void fragment() {
     }
 
     // Output the final color.
-    COLOR = tex_color;
+    COLOR = tex_color / darkness;
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6u2h"]
 shader = SubResource("Shader_o6u2h")
+shader_parameter/darkness = 1.0
 shader_parameter/amplitude = 2.0
 shader_parameter/frequency = 2.0
 shader_parameter/speed = 2.0
@@ -176,6 +251,31 @@ width = 1.0
 position = Vector2(0, -50)
 points = PackedVector2Array(37, 50, 6, -9)
 width = 1.0
+
+[node name="Shadow" type="Node2D" parent="."]
+position = Vector2(16, 16)
+
+[node name="basket" type="Node2D" parent="Shadow"]
+modulate = Color(0, 0, 0, 0.12549)
+position = Vector2(0, -1)
+
+[node name="basket" type="Sprite2D" parent="Shadow/basket"]
+position = Vector2(0, -31)
+texture = ExtResource("2_xf1nk")
+
+[node name="balloon" type="Node2D" parent="Shadow"]
+modulate = Color(0, 0, 0, 0.12549)
+position = Vector2(0, -1)
+
+[node name="balloon_graphics" type="TextureRect" parent="Shadow/balloon"]
+material = SubResource("ShaderMaterial_xwiuu")
+offset_left = -147.0
+offset_top = -329.0
+offset_right = -7.0
+offset_bottom = -189.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_4uhn6")
+metadata/_edit_use_anchors_ = true
 
 [node name="basket" type="Node2D" parent="."]
 position = Vector2(0, -1)
