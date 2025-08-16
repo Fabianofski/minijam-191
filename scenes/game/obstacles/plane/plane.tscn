@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwiwaqgy4exvc"]
+
+[ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="1_jrhtp"]
+[ext_resource type="Texture2D" uid="uid://bi3ji2dmr854u" path="res://scenes/game/obstacles/plane/plane_spr.png" id="2_pvhe3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8acg"]
+radius = 67.0
+height = 890.0
+
+[node name="Obstacle" instance=ExtResource("1_jrhtp")]
+speed_multiplier = Vector2(200, 1)
+randomize_flip = true
+start_on_the_sides = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pvhe3")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-10, 56)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_t8acg")

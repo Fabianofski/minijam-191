@@ -6,6 +6,7 @@
 [node name="Obstacle" type="Node2D"]
 script = ExtResource("1_lr08q")
 destroy_bounds = -500.0
+destroy_bounds_x = 800.0
 speed_multiplier = Vector2(5, 1)
 randomize_brightness = true
 randomize_size = true

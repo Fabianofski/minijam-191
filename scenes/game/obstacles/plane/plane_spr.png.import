@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi3ji2dmr854u"
-path="res://.godot/imported/plane_spr.png-0efca40735afa061a8860918fafefb75.ctex"
+path="res://.godot/imported/plane_spr.png-8a9dfe60257bd037d8914f670490b7f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game/obstacles/plane_spr.png"
-dest_files=["res://.godot/imported/plane_spr.png-0efca40735afa061a8860918fafefb75.ctex"]
+source_file="res://scenes/game/obstacles/plane/plane_spr.png"
+dest_files=["res://.godot/imported/plane_spr.png-8a9dfe60257bd037d8914f670490b7f2.ctex"]
 
 [params]
 

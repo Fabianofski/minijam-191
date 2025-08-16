@@ -7,4 +7,5 @@ func game_over():
 	self.visible = true
 
 func restart(): 
+	GameManager.reset()
 	get_tree().reload_current_scene()

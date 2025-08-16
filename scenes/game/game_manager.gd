@@ -11,3 +11,7 @@ func _process(delta: float) -> void:
 func start_game(): 
 	game_started = true
 	current_speed = 80
+
+func reset():
+	game_started = false 
+	current_speed = 0
