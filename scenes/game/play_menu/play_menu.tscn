@@ -141,7 +141,6 @@ grow_horizontal = 0
 texture = ExtResource("3_17m5x")
 
 [node name="MicControlMenu" parent="." instance=ExtResource("2_fvdyv")]
-visible = false
 layout_mode = 1
 
 [node name="Label" parent="MicControlMenu/AmpliSlider" index="0"]
