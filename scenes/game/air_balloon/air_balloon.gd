@@ -29,7 +29,7 @@ func rotate_and_move(delta: float):
 	position.x -= diff.x * speed * delta * blow_strength
 	position.x = clamp(position.x, -bounds, bounds)
 
-	balloon_graphics.look_at((mouse_pos.rotated(PI/2)) * -1)
+	balloon_graphics.rotation = -Vector2(diff.x, -diff.y).rotated(PI/2).angle()
 	balloon_graphics.rotation_degrees = clamp(balloon_graphics.rotation_degrees, -110, 110)
 
 func set_visual_parameters(): 
