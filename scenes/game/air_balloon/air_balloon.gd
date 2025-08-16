@@ -8,13 +8,12 @@ var diff: Vector2
 
 @onready var balloon_graphics: Node2D = $balloon
 @onready var basket_graphics: Node2D = $basket
-@onready var balloon_shader: TextureRect = $"balloon/balloon_graphics"
+@onready var balloon_shader: AnimatedSprite2D = $"balloon/balloon_graphics"
 @onready var fire: Node2D = $basket/fire
-@export var popped_tex: Texture
 @onready var pop_sound: AudioStreamPlayer2D = $Pop
 
 @onready var balloon_shadow_control: Node2D = $Shadow/balloon
-@onready var balloon_shadow_graphics: TextureRect = $Shadow/balloon/balloon_graphics
+@onready var balloon_shadow_graphics: AnimatedSprite2D = $Shadow/balloon/balloon_graphics
 @onready var basket_shadow: Node2D = $Shadow/basket
 
 @onready var line_l: Line2D = $LineL
@@ -66,8 +65,8 @@ func set_visual_parameters():
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
 
 func pop_balloon(): 
-	balloon_shader.texture = popped_tex
-	balloon_shadow_graphics.texture = popped_tex
+	balloon_shader.play("popped")
+	balloon_shadow_graphics.play("popped")
 	pop_sound.play()
 
 func fall_down(): 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=19 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bwe1357y3fo4i" path="res://scenes/game/air_balloon/pop.wav" id="3_xe7hi"]
 [ext_resource type="Texture2D" uid="uid://doon0ivvj5jsi" path="res://scenes/game/air_balloon/fire.png" id="3_xj65t"]
 [ext_resource type="Texture2D" uid="uid://dt5ll1eittct6" path="res://scenes/game/air_balloon/balloon_spr.png" id="4_4uhn6"]
+[ext_resource type="Texture2D" uid="uid://yv1pfke4e4ly" path="res://scenes/game/air_balloon/balloon_popping.png" id="7_xe7hi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaeym"]
 radius = 36.0
@@ -77,12 +78,52 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwiuu"]
 shader = SubResource("Shader_xe7hi")
-shader_parameter/darkness = 10.0
+shader_parameter/darkness = 5.0
 shader_parameter/amplitude = 2.0
 shader_parameter/frequency = 2.0
 shader_parameter/speed = 2.0
 shader_parameter/pole_side = 4
 shader_parameter/fixed_edge_range = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwiuu"]
+atlas = ExtResource("7_xe7hi")
+region = Rect2(0, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ke65"]
+atlas = ExtResource("7_xe7hi")
+region = Rect2(140, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npat6"]
+atlas = ExtResource("7_xe7hi")
+region = Rect2(280, 0, 140, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xj65t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4uhn6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwiuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ke65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npat6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ivjlr")
+}],
+"loop": false,
+"name": &"popped",
+"speed": 15.0
+}]
 
 [sub_resource type="Shader" id="Shader_xj65t"]
 code = "shader_type canvas_item;
@@ -232,7 +273,6 @@ shader_parameter/fixed_edge_range = 0.2
 script = ExtResource("1_851m2")
 bounds = 500.0
 speed = 200.0
-popped_tex = ExtResource("3_ivjlr")
 
 [node name="Pop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xe7hi")
@@ -267,14 +307,15 @@ texture = ExtResource("2_xf1nk")
 modulate = Color(0, 0, 0, 0.12549)
 position = Vector2(0, -1)
 
-[node name="balloon_graphics" type="TextureRect" parent="Shadow/balloon"]
+[node name="balloon_graphics" type="AnimatedSprite2D" parent="Shadow/balloon"]
 material = SubResource("ShaderMaterial_xwiuu")
-offset_left = -147.0
-offset_top = -329.0
-offset_right = -7.0
-offset_bottom = -189.0
+position = Vector2(0, -190)
 scale = Vector2(2, 2)
-texture = ExtResource("4_4uhn6")
+sprite_frames = SubResource("SpriteFrames_xj65t")
+animation = &"popped"
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="basket" type="Node2D" parent="."]
@@ -301,22 +342,23 @@ position = Vector2(34, 1)
 [node name="balloon" type="Node2D" parent="."]
 position = Vector2(0, -1)
 
-[node name="balloon_graphics" type="TextureRect" parent="balloon"]
+[node name="balloon_graphics" type="AnimatedSprite2D" parent="balloon"]
 material = SubResource("ShaderMaterial_o6u2h")
-offset_left = -147.0
-offset_top = -329.0
-offset_right = -7.0
-offset_bottom = -189.0
+position = Vector2(0, -187)
 scale = Vector2(2, 2)
-texture = ExtResource("4_4uhn6")
+sprite_frames = SubResource("SpriteFrames_xj65t")
+animation = &"popped"
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="AttachL" type="Node2D" parent="balloon/balloon_graphics"]
-position = Vector2(62, 135)
+position = Vector2(-7.5, 64)
 scale = Vector2(0.5, 0.5)
 
 [node name="AttachR" type="Node2D" parent="balloon/balloon_graphics"]
-position = Vector2(75.5, 135)
+position = Vector2(6, 64)
 scale = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
