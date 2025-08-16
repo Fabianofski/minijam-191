@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c25jbsd2glt0x"]
+[gd_scene load_steps=5 format=3 uid="uid://c25jbsd2glt0x"]
 
 [ext_resource type="Script" uid="uid://b6d667r20vp3d" path="res://scenes/game/play_menu/play_screen.gd" id="1_cvle8"]
 [ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_17m5x"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_fvdyv"]
+[ext_resource type="Texture2D" uid="uid://fqfdm3nk7qnp" path="res://scenes/game/play_menu/logo.png" id="3_17m5x"]
 
 [node name="PlayMenu" type="Control"]
 layout_mode = 3
@@ -32,35 +33,30 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="Title"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 4.0
-offset_right = 21.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -87.0
+offset_right = 57.0
+offset_bottom = -56.0
+grow_vertical = 0
 text = "Play"
 
 [node name="Button2" type="Button" parent="Title"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 44.0
-offset_right = 83.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -47.0
+offset_right = 179.0
+offset_bottom = -16.0
+grow_vertical = 0
 text = "Choose Microphone"
 
 [node name="Label" type="Label" parent="Title"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,6 +71,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "BLOWN AWAY"
 label_settings = ExtResource("2_17m5x")
+
+[node name="Logo" type="TextureRect" parent="Title"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -510.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 255.0
+grow_horizontal = 0
+texture = ExtResource("3_17m5x")
 
 [node name="MicControlMenu" parent="." instance=ExtResource("2_fvdyv")]
 visible = false
