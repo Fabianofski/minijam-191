@@ -9,16 +9,20 @@ extends Node2D
 
 func _ready():
 	var sprite = $Sprite2D
+	var wing = $Sprite2D/AnimatedSprite2D
 	if randomize_speed:
 		speed_multiplier *= randf_range(0.6, 1.4)
 	if randomize_brightness: 
 		sprite.self_modulate.a = randf_range(0.5, 1.0)
 	if randomize_size: 
-		sprite.scale *= randf_range(0.6, 1.4)
+		var scale = randf_range(0.6, 1.4)
+		sprite.scale *= scale
+		#wing.scale *= scale ALERT: Somehow broken!!!
 	if randomize_flip: 
 		sprite.flip_h = randf() < 0.5
 		if sprite.flip_h:
 			speed_multiplier.x = -speed_multiplier.x
+		#wing.flip_h = sprite.flip_h ALERT: Somehow broken!!!
 
 func _process(delta: float) -> void:
 	position.y -= delta * GameManager.current_speed * speed_multiplier.y

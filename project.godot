@@ -29,3 +29,4 @@ GameManager="*res://scenes/game/game_manager.gd"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.309804, 0.643137, 0.721569, 1)

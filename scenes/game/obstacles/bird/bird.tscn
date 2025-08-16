@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbjlrjxkwkk3r"]
+[gd_scene load_steps=6 format=3 uid="uid://bbjlrjxkwkk3r"]
 
 [ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="1_vth8d"]
 [ext_resource type="Texture2D" uid="uid://cx7ixpdidokq8" path="res://scenes/game/obstacles/bird/bird_spr.png" id="2_an0dm"]
 [ext_resource type="Texture2D" uid="uid://bdvxaxg4daff5" path="res://scenes/game/obstacles/bird/bird_wing_0_spr.png" id="3_tbp7n"]
+[ext_resource type="Texture2D" uid="uid://c2rpq08uws4vp" path="res://scenes/game/obstacles/bird/bird_wing_1_spr.png" id="4_tbp7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70gd6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tbp7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tbp7n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Obstacle" instance=ExtResource("1_vth8d")]
 speed_multiplier = Vector2(50, 1)
@@ -12,6 +27,8 @@ randomize_flip = true
 position = Vector2(0, 0)
 texture = ExtResource("2_an0dm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" index="0"]
-position = Vector2(0, 8)
-texture = ExtResource("3_tbp7n")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D" index="0"]
+position = Vector2(11, -3)
+sprite_frames = SubResource("SpriteFrames_70gd6")
+autoplay = "default"
+frame_progress = 0.414465
