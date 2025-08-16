@@ -11,6 +11,7 @@ var diff: Vector2
 @onready var balloon_shader: TextureRect = $"balloon/balloon_graphics"
 @onready var fire: Node2D = $basket/fire
 @export var popped_tex: Texture
+@onready var pop_sound: AudioStreamPlayer2D = $Pop
 
 @onready var line_l: Line2D = $LineL
 @onready var line_r: Line2D = $LineR
@@ -23,7 +24,7 @@ var diff: Vector2
 var game_lost: bool = false
 
 func _ready() -> void:
-	SignalBus.game_start.connect(func(): balloon_shader.texture = popped_tex)
+	SignalBus.game_start.connect(pop_balloon)
 	SignalBus.game_over.connect(fall_down)
 
 func _input(event):
@@ -56,6 +57,10 @@ func set_visual_parameters():
 	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
+
+func pop_balloon(): 
+	balloon_shader.texture = popped_tex
+	pop_sound.play()
 
 func fall_down(): 
 	var tween = create_tween()

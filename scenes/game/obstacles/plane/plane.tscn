@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwiwaqgy4exvc"]
+[gd_scene load_steps=5 format=3 uid="uid://bwiwaqgy4exvc"]
 
 [ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="1_jrhtp"]
 [ext_resource type="Texture2D" uid="uid://bi3ji2dmr854u" path="res://scenes/game/obstacles/plane/plane_spr.png" id="2_pvhe3"]
+[ext_resource type="AudioStream" uid="uid://uli5ifv4qcr8" path="res://scenes/game/obstacles/plane/plane_loop.ogg" id="3_pvhe3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8acg"]
 radius = 67.0
@@ -20,3 +21,7 @@ texture = ExtResource("2_pvhe3")
 position = Vector2(-10, 56)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_t8acg")
+
+[node name="Plane" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_pvhe3")
+autoplay = true
