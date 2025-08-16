@@ -19,27 +19,6 @@
 [ext_resource type="Script" uid="uid://5bqysifm3ti3" path="res://shared/textures/foreground_overlay.gd" id="14_ftsea"]
 [ext_resource type="PackedScene" uid="uid://c25jbsd2glt0x" path="res://scenes/game/play_menu/play_menu.tscn" id="18_uyinl"]
 
-[sub_resource type="Shader" id="Shader_vaxfo"]
-code = "shader_type canvas_item;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-uniform float opacity = 1.0;
-
-vec4 overlay(vec4 base, vec4 blend){
-	vec4 limit = step(0.5, base);
-	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
-}
-
-void fragment() {
-    vec4 baseColor = texture(TEXTURE, UV);
-    vec4 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV);
-    COLOR = overlay(baseColor / opacity, screenColor * opacity);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnwt"]
-shader = SubResource("Shader_vaxfo")
-shader_parameter/opacity = 1.4
-
 [sub_resource type="LabelSettings" id="LabelSettings_3xj4h"]
 font = ExtResource("2_otnwt")
 font_size = 340
@@ -94,6 +73,27 @@ Min_spawn_delay = 5.0
 Max_spawn_delay = 20.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
+[sub_resource type="Shader" id="Shader_vaxfo"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform float opacity = 1.0;
+
+vec4 overlay(vec4 base, vec4 blend){
+	vec4 limit = step(0.5, base);
+	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+
+void fragment() {
+    vec4 baseColor = texture(TEXTURE, UV);
+    vec4 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+    COLOR = overlay(baseColor / opacity, screenColor * opacity);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnwt"]
+shader = SubResource("Shader_vaxfo")
+shader_parameter/opacity = 1.4
+
 [node name="Root" type="Node2D"]
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -112,24 +112,6 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_vaxfo")
-
-[node name="Foreground Overlay" type="TextureRect" parent="Background"]
-material = SubResource("ShaderMaterial_otnwt")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -754.0
-offset_top = -733.0
-offset_right = 1246.0
-offset_bottom = 1267.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-mouse_filter = 2
-texture = ExtResource("13_vaxfo")
-script = ExtResource("14_ftsea")
 
 [node name="Timer" type="Label" parent="Background"]
 visible = false
@@ -219,3 +201,21 @@ layer = 5
 [node name="PlayMenu" parent="UserInterface" instance=ExtResource("18_uyinl")]
 offset_top = -3.0
 offset_bottom = -3.0
+
+[node name="Foreground Overlay" type="TextureRect" parent="UserInterface"]
+material = SubResource("ShaderMaterial_otnwt")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -754.0
+offset_top = -733.0
+offset_right = 1246.0
+offset_bottom = 1267.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+mouse_filter = 2
+texture = ExtResource("13_vaxfo")
+script = ExtResource("14_ftsea")
