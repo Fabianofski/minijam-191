@@ -23,7 +23,20 @@ animations = [{
 speed_multiplier = Vector2(50, 1)
 randomize_flip = true
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="." index="0"]
+show_behind_parent = true
+position = Vector2(8, 8)
+
+[node name="Shadow" parent="Shadow" index="0"]
+texture = ExtResource("2_an0dm")
+
+[node name="WingShadow" type="AnimatedSprite2D" parent="Shadow" index="1"]
+position = Vector2(12, -4)
+sprite_frames = SubResource("SpriteFrames_70gd6")
+autoplay = "default"
+frame_progress = 0.622957
+
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, 0)
 texture = ExtResource("2_an0dm")
 
@@ -33,6 +46,6 @@ sprite_frames = SubResource("SpriteFrames_70gd6")
 autoplay = "default"
 frame_progress = 0.622957
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(3, 0)
 scale = Vector2(0.73943, 0.429184)

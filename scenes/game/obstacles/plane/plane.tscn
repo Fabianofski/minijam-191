@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8acg"]
 radius = 67.0
-height = 890.0
+height = 842.0
 
 [node name="Obstacle" instance=ExtResource("1_jrhtp")]
 destroy_bounds_x = 1000.0
@@ -14,14 +14,17 @@ speed_multiplier = Vector2(200, 1)
 randomize_flip = true
 start_on_the_sides = true
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="Shadow" index="0"]
 texture = ExtResource("2_pvhe3")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-10, 56)
-rotation = -1.57079
-shape = SubResource("CapsuleShape2D_t8acg")
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_pvhe3")
 
 [node name="Plane" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_pvhe3")
 autoplay = true
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-20, 57)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_t8acg")

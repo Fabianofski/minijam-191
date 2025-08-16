@@ -11,6 +11,7 @@ extends Node2D
 @export var randomize_y: bool = false
 
 @onready var sprite = $Sprite2D
+@onready var shadow = $Shadow
 
 func _ready():
 	if randomize_speed:
@@ -33,6 +34,9 @@ func _ready():
 			position.x = destroy_bounds_x
 	if randomize_y: 
 		global_position.y = randf_range(global_position.y, destroy_bounds)
+	# Set shadow to match sprite
+	shadow.scale = sprite.scale
+	shadow.scale.x = sprite.scale.x
 
 func _process(delta: float) -> void:
 	position.y -= delta * GameManager.current_speed * speed_multiplier.y * GameManager.vertical_blow

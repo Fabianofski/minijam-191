@@ -11,6 +11,13 @@ script = ExtResource("1_gsu56")
 destroy_bounds = -500.0
 destroy_bounds_x = 800.0
 
+[node name="Shadow" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0.12549)
+position = Vector2(8, 18)
+
+[node name="Shadow" type="Sprite2D" parent="Shadow"]
+texture = ExtResource("1_l4brk")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
 texture = ExtResource("1_l4brk")
