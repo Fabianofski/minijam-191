@@ -132,6 +132,7 @@ texture = ExtResource("13_vaxfo")
 script = ExtResource("14_ftsea")
 
 [node name="Timer" type="Label" parent="Background"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
