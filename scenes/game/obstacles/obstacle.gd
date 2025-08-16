@@ -20,12 +20,14 @@ func _ready():
 	if randomize_size: 
 		var _scale = randf_range(0.6, 1.4)
 		sprite.scale *= _scale
+	var flip = false
 	if randomize_flip: 
-		sprite.flip_h = randf() < 0.5
-		if sprite.flip_h:
+		flip = randf() < 0.5 
+		if flip:
+			sprite.scale.x = -1
 			speed_multiplier.x = -speed_multiplier.x
 	if start_on_the_sides: 
-		if sprite.flip_h: 
+		if flip: 
 			position.x = -destroy_bounds_x
 		else: 
 			position.x = destroy_bounds_x
