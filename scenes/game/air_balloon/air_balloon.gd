@@ -39,6 +39,9 @@ func _process(delta: float) -> void:
 	if GameManager.game_started:
 		rotate_and_move(delta)
 	set_visual_parameters()
+	# And now, for the shadow
+	basket_shadow.rotation_degrees = basket_graphics.rotation_degrees
+	balloon_shadow_control.rotation_degrees = balloon_graphics.rotation_degrees
 
 func rotate_and_move(delta: float): 
 	var blow_strength = MicControl.get_blow_strength()
@@ -51,9 +54,6 @@ func rotate_and_move(delta: float):
 	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
 	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
 	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
-	# And now, for the shadow
-	basket_shadow.rotation_degrees = basket_graphics.rotation_degrees
-	balloon_shadow_control.rotation_degrees = balloon_graphics.rotation_degrees
 
 func set_visual_parameters(): 
 	var default_wind = 20.0 if GameManager.game_started else 5.0
@@ -70,10 +70,13 @@ func pop_balloon():
 
 func fall_down(): 
 	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, 1000), 1.5)
 	tween.set_ease(Tween.EASE_IN)
-	balloon_graphics.rotation_degrees = 0
-	basket_graphics.rotation_degrees = 0
+	tween.tween_property(self, "position", Vector2(position.x, 1000), 1.5)
+	var rot_tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_BOUNCE)
+	rot_tween.tween_property(balloon_graphics, "rotation_degrees", 0, 0.25)
+	rot_tween.tween_property(basket_graphics, "rotation_degrees", 0, 0.25)
 
 func _on_body_entered(_body: Node2D) -> void:
 	SignalBus.game_over.emit()
