@@ -1,9 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://c25jbsd2glt0x"]
+[gd_scene load_steps=12 format=3 uid="uid://c25jbsd2glt0x"]
 
 [ext_resource type="Script" uid="uid://b6d667r20vp3d" path="res://scenes/game/play_menu/play_screen.gd" id="1_cvle8"]
 [ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_17m5x"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_fvdyv"]
+[ext_resource type="Texture2D" uid="uid://karg46wlpnyn" path="res://scenes/game/lose_screen/btn_0.png" id="2_wi6ki"]
 [ext_resource type="Texture2D" uid="uid://fqfdm3nk7qnp" path="res://scenes/game/play_menu/logo.png" id="3_17m5x"]
+[ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="3_ym4uu"]
+[ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="4_qbabx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
+texture = ExtResource("2_wi6ki")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6txxq"]
+texture = ExtResource("3_ym4uu")
+texture_margin_left = 24.0
+texture_margin_top = 29.0
+texture_margin_right = 24.0
+
+[sub_resource type="Theme" id="Theme_awmtd"]
+Button/styles/focus = SubResource("StyleBoxTexture_r0pju")
+Button/styles/hover = SubResource("StyleBoxTexture_6txxq")
+Button/styles/normal = SubResource("StyleBoxTexture_r0pju")
+Button/styles/pressed = SubResource("StyleBoxTexture_6txxq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtnls"]
+font = ExtResource("4_qbabx")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="PlayMenu" type="Control"]
 layout_mode = 3
@@ -28,11 +54,31 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -87.0
-offset_right = 57.0
-offset_bottom = -56.0
+offset_top = -130.0
+offset_right = 144.0
+offset_bottom = -78.0
 grow_vertical = 0
-text = "Play"
+theme = SubResource("Theme_awmtd")
+text = "
+"
+
+[node name="Label" type="Label" parent="Title/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_vtnls")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button2" type="Button" parent="Title"]
 layout_mode = 1
@@ -40,11 +86,29 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -47.0
-offset_right = 179.0
+offset_top = -67.0
+offset_right = 358.0
 offset_bottom = -16.0
 grow_vertical = 0
+theme = SubResource("Theme_awmtd")
+
+[node name="Label" type="Label" parent="Title/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Choose Microphone"
+label_settings = SubResource("LabelSettings_vtnls")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Title"]
 visible = false
