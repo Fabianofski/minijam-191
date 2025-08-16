@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=28 format=3 uid="uid://ccx0v61gy2iva"]
 
 [ext_resource type="PackedScene" uid="uid://o1jhpwkep6qb" path="res://scenes/game/air_balloon/air_balloon.tscn" id="2_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_7h61r"]
@@ -14,8 +14,31 @@
 [ext_resource type="Texture2D" uid="uid://b0hdpd0v6mfrk" path="res://shared/textures/paper_tex_0.jpg" id="7_vaxfo"]
 [ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="8_4j704"]
 [ext_resource type="PackedScene" uid="uid://bbjlrjxkwkk3r" path="res://scenes/game/obstacles/bird/bird.tscn" id="8_kp23o"]
+[ext_resource type="PackedScene" uid="uid://ba8nm5wm1pk3s" path="res://scenes/game/obstacles/balloon/balloon.tscn" id="12_5v6r0"]
 [ext_resource type="Texture2D" uid="uid://c2krkdvsfcn4k" path="res://shared/textures/paper_tex_1.jpg" id="13_vaxfo"]
 [ext_resource type="Script" uid="uid://5bqysifm3ti3" path="res://shared/textures/foreground_overlay.gd" id="14_ftsea"]
+[ext_resource type="PackedScene" uid="uid://c25jbsd2glt0x" path="res://scenes/game/play_menu/play_menu.tscn" id="18_uyinl"]
+
+[sub_resource type="Shader" id="Shader_vaxfo"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform float opacity = 1.0;
+
+vec4 overlay(vec4 base, vec4 blend){
+	vec4 limit = step(0.5, base);
+	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+
+void fragment() {
+    vec4 baseColor = texture(TEXTURE, UV);
+    vec4 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+    COLOR = overlay(baseColor / opacity, screenColor * opacity);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnwt"]
+shader = SubResource("Shader_vaxfo")
+shader_parameter/opacity = 1.4
 
 [sub_resource type="LabelSettings" id="LabelSettings_3xj4h"]
 font = ExtResource("2_otnwt")
@@ -64,32 +87,12 @@ Min_spawn_delay = 1.0
 Max_spawn_delay = 3.0
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
-[sub_resource type="Shader" id="Shader_vaxfo"]
-code = "shader_type canvas_item;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-uniform float opacity = 1.0;
-
-vec4 overlay(vec4 base, vec4 blend){
-	vec4 limit = step(0.5, base);
-	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
-}
-
-void fragment() {
-    vec4 baseColor = texture(TEXTURE, UV);
-    vec4 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV);
-    COLOR = overlay(baseColor / opacity, screenColor * opacity);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnwt"]
-shader = SubResource("Shader_vaxfo")
-shader_parameter/opacity = 1.4
-
 [node name="Root" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Background Overlay" type="TextureRect" parent="."]
+[node name="Background Overlay" type="TextureRect" parent="Background"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -103,16 +106,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_vaxfo")
 
-[node name="Timer" type="Label" parent="."]
+[node name="Foreground Overlay" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_otnwt")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = -11.5
-offset_right = 93.0
-offset_bottom = 11.5
+offset_left = -754.0
+offset_top = -733.0
+offset_right = 1246.0
+offset_bottom = 1267.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+mouse_filter = 2
+texture = ExtResource("13_vaxfo")
+script = ExtResource("14_ftsea")
+
+[node name="Timer" type="Label" parent="Background"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -212.5
+offset_right = 220.5
+offset_bottom = 212.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "0''"
@@ -121,66 +142,74 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_3xj4h")
 
-[node name="DecorationSpawner" type="Node2D" parent="."]
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+
+[node name="DecorationSpawner" type="Node2D" parent="Game"]
 position = Vector2(0, 400)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
 slots = 5
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
 
-[node name="Obstacle" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+[node name="Obstacle" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
 position = Vector2(-127, -602)
 
-[node name="Obstacle2" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+[node name="Obstacle2" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
 position = Vector2(-400, -149)
 
-[node name="Obstacle3" parent="DecorationSpawner" instance=ExtResource("5_4j704")]
+[node name="Obstacle3" parent="Game/DecorationSpawner" instance=ExtResource("5_4j704")]
 position = Vector2(200, -231)
 randomize_brightness = false
 randomize_size = false
 randomize_flip = false
 
-[node name="Obstacle4" parent="DecorationSpawner" instance=ExtResource("6_kp23o")]
+[node name="Obstacle4" parent="Game/DecorationSpawner" instance=ExtResource("6_kp23o")]
 position = Vector2(-322, -433)
 randomize_brightness = false
 randomize_size = false
 randomize_flip = false
 
-[node name="Obstacle5" parent="DecorationSpawner" instance=ExtResource("7_5jirj")]
+[node name="Obstacle5" parent="Game/DecorationSpawner" instance=ExtResource("7_5jirj")]
 position = Vector2(326, -467)
 randomize_brightness = false
 randomize_size = false
 randomize_flip = false
 
-[node name="Obstacle6" parent="DecorationSpawner" instance=ExtResource("4_2a8rs")]
+[node name="Obstacle6" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
 position = Vector2(388, -46)
 
-[node name="ObstacleSpawner" type="Node2D" parent="."]
+[node name="ObstacleSpawner" type="Node2D" parent="Game"]
 position = Vector2(0, 400)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj")])
 
-[node name="AirBalloon" parent="." instance=ExtResource("2_0sr1o")]
+[node name="Obstacle" parent="Game/ObstacleSpawner" instance=ExtResource("8_kp23o")]
+position = Vector2(609, -168)
 
-[node name="MicControlMenu" parent="." instance=ExtResource("2_7h61r")]
+[node name="Obstacle2" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
+position = Vector2(-353, -307)
 
-[node name="LoseMenu" parent="." instance=ExtResource("4_kelw5")]
+[node name="Obstacle3" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
+position = Vector2(468, -595)
 
-[node name="Foreground Overlay" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_otnwt")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -745.0
-offset_top = -745.0
-offset_right = 1255.0
-offset_bottom = 1255.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-mouse_filter = 2
-texture = ExtResource("13_vaxfo")
-script = ExtResource("14_ftsea")
+[node name="Obstacle4" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
+position = Vector2(-552, -565)
+
+[node name="Obstacle5" parent="Game/ObstacleSpawner" instance=ExtResource("8_kp23o")]
+position = Vector2(-502, -496)
+
+[node name="AirBalloon" parent="Game" instance=ExtResource("2_0sr1o")]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="MicControlMenu" parent="UserInterface" instance=ExtResource("2_7h61r")]
+
+[node name="LoseMenu" parent="UserInterface" instance=ExtResource("4_kelw5")]
+
+[node name="PlayMenu" parent="UserInterface" instance=ExtResource("18_uyinl")]
+offset_top = -3.0
+offset_bottom = -3.0

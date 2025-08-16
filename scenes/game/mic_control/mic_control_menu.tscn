@@ -18,24 +18,24 @@ gradient = SubResource("Gradient_5ma71")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -556.0
-offset_top = -11.0
-offset_right = -516.0
-offset_bottom = 12.0
+offset_left = 56.0
+offset_top = 126.0
+offset_right = 96.0
+offset_bottom = 149.0
 text = "Mic:"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = -546.0
-offset_top = -282.0
-offset_right = -352.0
-offset_bottom = -249.0
+offset_left = 48.0
+offset_top = 27.0
+offset_right = 242.0
+offset_bottom = 60.0
 
 [node name="HSlider" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = -542.0
-offset_top = -229.0
-offset_right = -354.0
-offset_bottom = -204.0
+offset_left = 52.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 105.0
 editable = false
 scrollable = false
