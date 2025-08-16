@@ -9,6 +9,7 @@ var diff: Vector2
 @onready var balloon_graphics: Node2D = $balloon
 @onready var basket_graphics: Node2D = $basket
 @onready var balloon_shader: TextureRect = $"balloon/balloon_graphics"
+@onready var fire: Node2D = $basket/fire
 @export var popped_tex: Texture
 
 @onready var line_l: Line2D = $LineL
@@ -45,11 +46,12 @@ func rotate_and_move(delta: float):
 	var rot_deg = abs(rad_to_deg(diff.angle())) - 90
 	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
 	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
+	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
 
 func set_visual_parameters(): 
 	var default_wind = 20.0 if GameManager.game_started else 5.0
 	balloon_shader.material.set_shader_parameter("speed", default_wind + abs(MicControl.get_blow_strength()))
-
+	
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))
 	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
