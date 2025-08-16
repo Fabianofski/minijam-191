@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cgvj2tksq1srm"
-path="res://.godot/imported/PAPER NOTE.otf-fa06f56651605921b0f08267cf4e3aa8.fontdata"
+uid="uid://dyp0j5gh3j3r"
+path="res://.godot/imported/DeliusUnicase-Regular.ttf-223701c5552dbafa54e0ea9b4ffacf4b.fontdata"
 
 [deps]
 
-source_file="res://shared/fonts/PAPER NOTE.otf"
-dest_files=["res://.godot/imported/PAPER NOTE.otf-fa06f56651605921b0f08267cf4e3aa8.fontdata"]
+source_file="res://shared/fonts/DeliusUnicase-Regular.ttf"
+dest_files=["res://.godot/imported/DeliusUnicase-Regular.ttf-223701c5552dbafa54e0ea9b4ffacf4b.fontdata"]
 
 [params]
 
