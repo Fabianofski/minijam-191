@@ -3,11 +3,13 @@ extends Node2D
 var current_speed: float = 0 
 var vertical_blow: float = 0
 var game_started: bool = false
+var distance_travelled: float = 0
 
 func _process(delta: float) -> void:
 	if not game_started: 
 		return
 	current_speed += delta 
+	distance_travelled += (delta * GameManager.current_speed * GameManager.vertical_blow) / 100
 
 func start_game(): 
 	game_started = true
@@ -17,3 +19,4 @@ func start_game():
 func reset():
 	game_started = false 
 	current_speed = 0
+	distance_travelled = 0

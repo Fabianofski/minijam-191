@@ -1,17 +1,16 @@
-[gd_scene load_steps=29 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=28 format=3 uid="uid://ccx0v61gy2iva"]
 
 [ext_resource type="PackedScene" uid="uid://o1jhpwkep6qb" path="res://scenes/game/air_balloon/air_balloon.tscn" id="2_0sr1o"]
 [ext_resource type="FontFile" uid="uid://j0gptsyrjoyg" path="res://shared/fonts/Lexend-Black.ttf" id="2_otnwt"]
 [ext_resource type="Script" uid="uid://xwmbvvw1e1nt" path="res://scenes/game/obstacles/obstacle_spawner.gd" id="3_0sr1o"]
-[ext_resource type="Script" uid="uid://cjs5lspipsg5d" path="res://scenes/game/timer.gd" id="3_3xj4h"]
 [ext_resource type="Script" uid="uid://bgb7upm6p5q20" path="res://scenes/game/obstacles/obstacle_res.gd" id="3_lfrn8"]
+[ext_resource type="Script" uid="uid://dew3a72315sfl" path="res://scenes/game/score.gd" id="3_uyinl"]
 [ext_resource type="PackedScene" uid="uid://divmcwl68styp" path="res://scenes/game/obstacles/clouds/cloud_0.tscn" id="4_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://ctk44t6j570tc" path="res://scenes/game/lose_screen/lose_menu.tscn" id="4_kelw5"]
 [ext_resource type="PackedScene" uid="uid://gdeobq35row7" path="res://scenes/game/obstacles/clouds/cloud_1.tscn" id="5_4j704"]
 [ext_resource type="PackedScene" uid="uid://dt0537aou11yd" path="res://scenes/game/obstacles/clouds/cloud_2.tscn" id="6_kp23o"]
 [ext_resource type="PackedScene" uid="uid://cvwtk3mq6w3p0" path="res://scenes/game/obstacles/clouds/cloud_3.tscn" id="7_5jirj"]
 [ext_resource type="Texture2D" uid="uid://b0hdpd0v6mfrk" path="res://shared/textures/paper_tex_0.jpg" id="7_vaxfo"]
-[ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="8_4j704"]
 [ext_resource type="PackedScene" uid="uid://bbjlrjxkwkk3r" path="res://scenes/game/obstacles/bird/bird.tscn" id="8_kp23o"]
 [ext_resource type="PackedScene" uid="uid://ba8nm5wm1pk3s" path="res://scenes/game/obstacles/balloon/balloon.tscn" id="12_5v6r0"]
 [ext_resource type="Texture2D" uid="uid://c2krkdvsfcn4k" path="res://shared/textures/paper_tex_1.jpg" id="13_vaxfo"]
@@ -26,51 +25,72 @@ font_color = Color(0.533333, 0.890196, 0.913725, 1)
 
 [sub_resource type="Resource" id="Resource_vaxfo"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("4_2a8rs")
-Min_spawn_delay = 3.0
-Max_spawn_delay = 8.0
+prefab = ExtResource("4_2a8rs")
+min_spawn_delay = 0.0
+max_spawn_delay = 5.0
+min_spawn_amount = 1
+max_spawn_amount = 1
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_ftsea"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("5_4j704")
-Min_spawn_delay = 3.0
-Max_spawn_delay = 8.0
+prefab = ExtResource("5_4j704")
+min_spawn_delay = 0.0
+max_spawn_delay = 5.0
+min_spawn_amount = 1
+max_spawn_amount = 1
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_otnwt"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("6_kp23o")
-Min_spawn_delay = 3.0
-Max_spawn_delay = 8.0
+prefab = ExtResource("6_kp23o")
+min_spawn_delay = 0.0
+max_spawn_delay = 5.0
+min_spawn_amount = 1
+max_spawn_amount = 1
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_3xj4h"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("7_5jirj")
-Min_spawn_delay = 3.0
-Max_spawn_delay = 8.0
+prefab = ExtResource("7_5jirj")
+min_spawn_delay = 0.0
+max_spawn_delay = 5.0
+min_spawn_amount = 1
+max_spawn_amount = 1
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_kp23o"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("8_4j704")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+prefab = ExtResource("12_5v6r0")
+min_spawn_delay = 0.0
+max_spawn_delay = 10.0
+min_spawn_amount = 1
+max_spawn_amount = 3
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_5jirj"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("8_kp23o")
-Min_spawn_delay = 1.0
-Max_spawn_delay = 3.0
+prefab = ExtResource("8_kp23o")
+min_spawn_delay = 0.0
+max_spawn_delay = 20.0
+min_spawn_amount = 1
+max_spawn_amount = 2
+prefill = true
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Resource" id="Resource_pg2xm"]
 script = ExtResource("3_lfrn8")
-Prefab = ExtResource("14_10c2w")
-Min_spawn_delay = 5.0
-Max_spawn_delay = 20.0
+prefab = ExtResource("14_10c2w")
+min_spawn_delay = 5.0
+max_spawn_delay = 30.0
+min_spawn_amount = 1
+max_spawn_amount = 1
+prefill = false
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
 [sub_resource type="Shader" id="Shader_vaxfo"]
@@ -130,7 +150,7 @@ text = "0''"
 label_settings = SubResource("LabelSettings_3xj4h")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("3_3xj4h")
+script = ExtResource("3_uyinl")
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -143,53 +163,11 @@ bounds_x = 500.0
 slots = 5
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
 
-[node name="Obstacle" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
-position = Vector2(-127, -602)
-
-[node name="Obstacle2" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
-position = Vector2(-400, -149)
-
-[node name="Obstacle3" parent="Game/DecorationSpawner" instance=ExtResource("5_4j704")]
-position = Vector2(200, -231)
-randomize_brightness = false
-randomize_size = false
-randomize_flip = false
-
-[node name="Obstacle4" parent="Game/DecorationSpawner" instance=ExtResource("6_kp23o")]
-position = Vector2(-322, -433)
-randomize_brightness = false
-randomize_size = false
-randomize_flip = false
-
-[node name="Obstacle5" parent="Game/DecorationSpawner" instance=ExtResource("7_5jirj")]
-position = Vector2(326, -467)
-randomize_brightness = false
-randomize_size = false
-randomize_flip = false
-
-[node name="Obstacle6" parent="Game/DecorationSpawner" instance=ExtResource("4_2a8rs")]
-position = Vector2(388, -46)
-
 [node name="ObstacleSpawner" type="Node2D" parent="Game"]
 position = Vector2(0, 400)
 script = ExtResource("3_0sr1o")
 bounds_x = 500.0
 obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj"), SubResource("Resource_pg2xm")])
-
-[node name="Obstacle" parent="Game/ObstacleSpawner" instance=ExtResource("8_kp23o")]
-position = Vector2(609, -168)
-
-[node name="Obstacle2" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
-position = Vector2(-353, -307)
-
-[node name="Obstacle3" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
-position = Vector2(468, -595)
-
-[node name="Obstacle4" parent="Game/ObstacleSpawner" instance=ExtResource("12_5v6r0")]
-position = Vector2(-552, -565)
-
-[node name="Obstacle5" parent="Game/ObstacleSpawner" instance=ExtResource("8_kp23o")]
-position = Vector2(-502, -496)
 
 [node name="AirBalloon" parent="Game" instance=ExtResource("2_0sr1o")]
 

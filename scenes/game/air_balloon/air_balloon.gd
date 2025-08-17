@@ -89,4 +89,8 @@ func fall_down():
 	rot_tween.tween_property(basket_graphics, "rotation_degrees", 0, 0.25)
 
 func _on_body_entered(_body: Node2D) -> void:
+	if game_lost: 
+		return 
+	if not GameManager.game_started: 
+		return
 	SignalBus.game_over.emit()

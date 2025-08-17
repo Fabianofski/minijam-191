@@ -33,10 +33,13 @@ func _ready():
 		else: 
 			position.x = destroy_bounds_x
 	if randomize_y: 
-		global_position.y = randf_range(global_position.y, destroy_bounds)
+		randomize_y_pos()
 	# Set shadow to match sprite
 	shadow.scale = sprite.scale
 	shadow.scale.x = sprite.scale.x
+
+func randomize_y_pos(): 
+	global_position.y = randf_range(global_position.y, destroy_bounds)
 
 func _process(delta: float) -> void:
 	position.y -= delta * GameManager.current_speed * speed_multiplier.y * GameManager.vertical_blow

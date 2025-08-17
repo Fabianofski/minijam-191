@@ -1,18 +1,15 @@
 extends Label
 
-var time_elapsed: float = 0.0
-
 func _ready() -> void:
 	SignalBus.game_start.connect(game_started)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not GameManager.game_started:
 		return
-	time_elapsed += (delta * GameManager.current_speed * GameManager.vertical_blow) / 100
 	update_label()
 
 func update_label(): 
-	self.text = "%dm" % time_elapsed
+	self.text = "%dm" % GameManager.distance_travelled
 
 func game_started():
 	self.visible = true
