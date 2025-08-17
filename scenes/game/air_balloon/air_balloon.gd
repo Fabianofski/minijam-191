@@ -62,9 +62,12 @@ func set_visual_parameters():
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
 
-	var blow = MicControl.get_blow_strength()
-	burner_sound.volume_linear = blow
-	fire.visible = blow != 0
+	if GameManager.game_started:
+		var blow = MicControl.get_blow_strength()
+		burner_sound.volume_linear = blow
+		fire.visible = blow != 0
+	else:
+		burner_sound.volume_linear = 0.1
 
 func pop_balloon(): 
 	balloon_shader.play("popped")
