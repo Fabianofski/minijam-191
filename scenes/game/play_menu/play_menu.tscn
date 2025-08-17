@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://c25jbsd2glt0x"]
 
 [ext_resource type="Script" uid="uid://b6d667r20vp3d" path="res://scenes/game/play_menu/play_screen.gd" id="1_cvle8"]
-[ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_17m5x"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_fvdyv"]
 [ext_resource type="Texture2D" uid="uid://karg46wlpnyn" path="res://scenes/game/lose_screen/btn_0.png" id="2_wi6ki"]
 [ext_resource type="Texture2D" uid="uid://fqfdm3nk7qnp" path="res://scenes/game/play_menu/logo.png" id="3_17m5x"]
 [ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="3_ym4uu"]
 [ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="4_qbabx"]
+[ext_resource type="LabelSettings" uid="uid://bbmhkpo6cvr0d" path="res://shared/fonts/paragraph_label.tres" id="5_ym4uu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
 texture = ExtResource("2_wi6ki")
@@ -110,22 +110,19 @@ label_settings = SubResource("LabelSettings_vtnls")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Title"]
+[node name="Highscore" type="Label" parent="Title"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -167.0
-offset_top = -85.0
-offset_right = 168.0
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "BLOWN AWAY"
-label_settings = ExtResource("2_17m5x")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -464.0
+offset_top = 268.0
+offset_right = -60.0
+offset_bottom = 311.0
+grow_horizontal = 0
+text = "Highscore: 0"
+label_settings = ExtResource("5_ym4uu")
 
 [node name="Logo" type="TextureRect" parent="Title"]
 texture_filter = 2

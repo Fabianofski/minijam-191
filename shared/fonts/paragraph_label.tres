@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bbmhkpo6cvr0d"]
+
+[ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="1_y8m52"]
+
+[resource]
+font = ExtResource("1_y8m52")
+font_size = 31
+outline_size = 6
+shadow_size = 3
+shadow_color = Color(0.355314, 0.355314, 0.355314, 0.862745)
+shadow_offset = Vector2(3, 3)

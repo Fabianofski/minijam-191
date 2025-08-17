@@ -4,6 +4,7 @@ var current_speed: float = 0
 var vertical_blow: float = 0
 var game_started: bool = false
 var distance_travelled: float = 0
+var highscore: float = 0
 
 func _process(delta: float) -> void:
 	if not game_started: 
@@ -17,6 +18,8 @@ func start_game():
 	SignalBus.game_start.emit()
 
 func reset():
+	if distance_travelled > highscore: 
+		highscore = distance_travelled
 	game_started = false 
 	current_speed = 0
 	distance_travelled = 0
