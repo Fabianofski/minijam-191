@@ -11,6 +11,7 @@ var diff: Vector2
 @onready var balloon_shader: AnimatedSprite2D = $"balloon/balloon_graphics"
 @onready var fire: Node2D = $basket/fire
 @onready var pop_sound: AudioStreamPlayer2D = $Pop
+@onready var burner_sound: AudioStreamPlayer2D = $Burner
 
 @onready var balloon_shadow_control: Node2D = $Shadow/balloon
 @onready var balloon_shadow_graphics: AnimatedSprite2D = $Shadow/balloon/balloon_graphics
@@ -56,12 +57,14 @@ func rotate_and_move(delta: float):
 	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
 
 func set_visual_parameters(): 
-	var default_wind = 20.0 if GameManager.game_started else 5.0
-	
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))
 	line_r.set_point_position(0, line_r.to_local(attach_r_2.global_position))
 	line_l.set_point_position(1, line_l.to_local(attach_l.global_position))
 	line_r.set_point_position(1, line_r.to_local(attach_r.global_position))
+
+	var blow = MicControl.get_blow_strength()
+	burner_sound.volume_linear = blow
+	fire.visible = blow != 0
 
 func pop_balloon(): 
 	balloon_shader.play("popped")

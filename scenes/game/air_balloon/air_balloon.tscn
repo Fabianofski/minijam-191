@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=20 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="AudioStream" uid="uid://77gv61gfumx7" path="res://scenes/game/air_balloon/pop.ogg" id="2_xe7hi"]
 [ext_resource type="Texture2D" uid="uid://dp7tref2b41ji" path="res://scenes/game/air_balloon/basket_spr.png" id="2_xf1nk"]
+[ext_resource type="AudioStream" uid="uid://bd3s0mx16efs6" path="res://scenes/game/air_balloon/air-balloon-burner.wav" id="2_xwiuu"]
 [ext_resource type="Texture2D" uid="uid://cqbh1soyw1ii2" path="res://scenes/game/air_balloon/balloon_popped_spr.png" id="3_ivjlr"]
 [ext_resource type="Texture2D" uid="uid://doon0ivvj5jsi" path="res://scenes/game/air_balloon/fire.png" id="3_xj65t"]
 [ext_resource type="Texture2D" uid="uid://dt5ll1eittct6" path="res://scenes/game/air_balloon/balloon_spr.png" id="4_4uhn6"]
@@ -274,9 +275,13 @@ script = ExtResource("1_851m2")
 bounds = 500.0
 speed = 200.0
 
+[node name="Burner" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xwiuu")
+volume_db = -9.563
+autoplay = true
+
 [node name="Pop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_xe7hi")
-volume_db = 7.172
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
