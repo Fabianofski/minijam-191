@@ -66,6 +66,7 @@ func set_visual_parameters():
 func pop_balloon(): 
 	balloon_shader.play("popped")
 	balloon_shadow_graphics.play("popped")
+	balloon_shader.material.set_shader_parameter("speed", 20.0)
 	pop_sound.play()
 
 func fall_down(): 
