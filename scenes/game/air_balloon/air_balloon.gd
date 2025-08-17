@@ -64,6 +64,8 @@ func rotate_and_move(delta: float):
 	wind_graphics.rotation_degrees = rad_to_deg(diff.angle()) - 90 
 	if blow_strength > 0 and wind_sprite.is_playing() == false:
 		wind_sprite.play("default")
+	if wind_graphics.visible == false:
+		wind_graphics.visible = true
 
 func set_visual_parameters(): 
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))

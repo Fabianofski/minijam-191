@@ -422,6 +422,7 @@ position = Vector2(6, 64)
 scale = Vector2(0.5, 0.5)
 
 [node name="wind" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="wind"]
 position = Vector2(0, 175)
