@@ -75,6 +75,7 @@ func set_visual_parameters():
 		var blow = MicControl.get_blow_strength()
 		burner_sound.volume_linear = blow
 		fire.scale = Vector2(blow, blow)
+		wind_sprite.scale = Vector2(blow, blow) * 1.5
 	else:
 		burner_sound.volume_linear = 0.1
 
