@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://822ushquxl15"]
+[gd_scene load_steps=4 format=3 uid="uid://822ushquxl15"]
 
 [ext_resource type="Script" uid="uid://cv22avya3bbke" path="res://shared/jukebox.gd" id="1_2vbuu"]
 [ext_resource type="AudioStream" uid="uid://g8ap87g8ilt4" path="res://shared/audio/menu.ogg" id="2_ohrqp"]
+[ext_resource type="AudioStream" uid="uid://brw7buxbp15pc" path="res://shared/audio/GAMEPLAY.ogg" id="2_tjlxh"]
 
 [node name="JukeBox" type="Node2D"]
 script = ExtResource("1_2vbuu")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ohrqp")
+stream = ExtResource("2_tjlxh")
 volume_db = -80.0
 bus = &"Music"
 

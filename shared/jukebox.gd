@@ -23,7 +23,7 @@ func fade(track: String, fade_in: bool):
 		player.play()
 
 	var target_volume = 1 if fade_in else 0
-	var tween_time = 4 if fade_in else 1
+	var tween_time = 0.5 if fade_in else 0.2 
 
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "volume_linear", target_volume, tween_time)
