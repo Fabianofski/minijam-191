@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=28 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="AudioStream" uid="uid://77gv61gfumx7" path="res://scenes/game/air_balloon/pop.ogg" id="2_xe7hi"]
@@ -272,6 +272,52 @@ shader_parameter/speed = 2.0
 shader_parameter/pole_side = 4
 shader_parameter/fixed_edge_range = 0.2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6p5j"]
+atlas = ExtResource("10_npat6")
+region = Rect2(0, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cflyo"]
+atlas = ExtResource("10_npat6")
+region = Rect2(140, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwxeh"]
+atlas = ExtResource("10_npat6")
+region = Rect2(280, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhcas"]
+atlas = ExtResource("10_npat6")
+region = Rect2(420, 0, 140, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcyc5"]
+atlas = ExtResource("10_npat6")
+region = Rect2(560, 0, 140, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtvml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6p5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cflyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwxeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhcas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcyc5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="AirBalloon" type="Area2D"]
 script = ExtResource("1_851m2")
 bounds = 500.0
@@ -377,9 +423,12 @@ scale = Vector2(0.5, 0.5)
 
 [node name="wind" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="wind"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="wind"]
 position = Vector2(0, 250)
 scale = Vector2(2, 2)
-texture = ExtResource("10_npat6")
+sprite_frames = SubResource("SpriteFrames_jtvml")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
