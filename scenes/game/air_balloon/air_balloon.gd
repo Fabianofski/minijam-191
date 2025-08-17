@@ -16,6 +16,7 @@ var diff: Vector2
 
 @onready var balloon_shadow_control: Node2D = $Shadow/balloon
 @onready var balloon_shadow_graphics: AnimatedSprite2D = $Shadow/balloon/balloon_graphics
+@onready var wind_graphics: Node2D = $wind
 @onready var basket_shadow: Node2D = $Shadow/basket
 
 @onready var line_l: Line2D = $LineL
@@ -41,9 +42,6 @@ func _process(delta: float) -> void:
 	if GameManager.game_started:
 		rotate_and_move(delta)
 	set_visual_parameters()
-	# And now, for the shadow
-	basket_shadow.rotation_degrees = basket_graphics.rotation_degrees
-	balloon_shadow_control.rotation_degrees = balloon_graphics.rotation_degrees
 
 func rotate_and_move(delta: float): 
 	var blow_strength = MicControl.get_blow_strength()
@@ -53,9 +51,17 @@ func rotate_and_move(delta: float):
 	GameManager.vertical_blow = -diff.y * blow_strength + 1
 
 	var rot_deg = abs(rad_to_deg(diff.angle())) - 90
+
 	balloon_graphics.rotation_degrees = clamp(rot_deg, -110, 110)
+	balloon_shadow_control.rotation_degrees = balloon_graphics.rotation_degrees
+
 	basket_graphics.rotation_degrees = clamp(rot_deg / 2, -65, 65)
+	basket_shadow.rotation_degrees = basket_graphics.rotation_degrees
+
 	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
+
+	wind_graphics.rotation_degrees = rad_to_deg(diff.angle()) - 90 
+	wind_graphics.visible = blow_strength > 0
 
 func set_visual_parameters(): 
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))

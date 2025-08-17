@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://o1jhpwkep6qb"]
+[gd_scene load_steps=22 format=3 uid="uid://o1jhpwkep6qb"]
 
 [ext_resource type="Script" uid="uid://bqg5ick5ma6bq" path="res://scenes/game/air_balloon/air_balloon.gd" id="1_851m2"]
 [ext_resource type="AudioStream" uid="uid://77gv61gfumx7" path="res://scenes/game/air_balloon/pop.ogg" id="2_xe7hi"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://db3r30k2vubyb" path="res://scenes/game/air_balloon/die.wav" id="4_0ke65"]
 [ext_resource type="Texture2D" uid="uid://dt5ll1eittct6" path="res://scenes/game/air_balloon/balloon_spr.png" id="4_4uhn6"]
 [ext_resource type="Texture2D" uid="uid://yv1pfke4e4ly" path="res://scenes/game/air_balloon/balloon_popping.png" id="7_xe7hi"]
+[ext_resource type="Texture2D" uid="uid://s647q8m773t2" path="res://scenes/game/air_balloon/wind.png" id="10_npat6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oaeym"]
 radius = 36.0
@@ -373,5 +374,12 @@ scale = Vector2(0.5, 0.5)
 [node name="AttachR" type="Node2D" parent="balloon/balloon_graphics"]
 position = Vector2(6, 64)
 scale = Vector2(0.5, 0.5)
+
+[node name="wind" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="wind"]
+position = Vector2(0, 250)
+scale = Vector2(2, 2)
+texture = ExtResource("10_npat6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
