@@ -4,7 +4,7 @@ extends Node
 
 func _ready() -> void:
 	highscore_label.visible = GameManager.highscore != 0
-	highscore_label.text = "Highscore: %dm" % GameManager.highscore
+	highscore_label.text = "High score: %dm" % GameManager.highscore
 
 func start_game(): 
 	GameManager.start_game()

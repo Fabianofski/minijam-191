@@ -9,9 +9,13 @@ extends Node2D
 @export var randomize_flip: bool = false
 @export var start_on_the_sides: bool = false
 @export var randomize_y: bool = false
+@export var randomize_colour: bool = false
 
 @onready var sprite = $Sprite2D
 @onready var shadow = $Shadow
+
+var colours: Array = [Color.WHITE, Color("#e64539"), Color("#c8d45d"),
+Color("#ba2fcc"), Color("#ff8933"), Color("#ffee83")] # White, red, green, purple. orange, yellow
 
 func _ready():
 	if randomize_speed:
@@ -34,6 +38,8 @@ func _ready():
 			position.x = destroy_bounds_x
 	if randomize_y: 
 		randomize_y_pos()
+	if randomize_colour:
+		sprite.self_modulate = colours.pick_random()
 	# Set shadow to match sprite
 	if shadow:
 		shadow.scale = sprite.scale
