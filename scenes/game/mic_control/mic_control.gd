@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 
 	var sample_avg = average_array(volume_samples)
 	db = round(linear_to_db(sample_avg * amplify))
-	percent = (db + 80.0) / 80.0
+	percent = clamp((db + 80.0) / 80.0, 0, 1)
 
 func average_array(arr: Array) -> float:
 	var avg = 0.0
