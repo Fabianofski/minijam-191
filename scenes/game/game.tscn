@@ -26,6 +26,15 @@ font = ExtResource("2_otnwt")
 font_size = 340
 font_color = Color(0.533333, 0.890196, 0.913725, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_8b66f"]
+font = ExtResource("16_gc57s")
+font_size = 31
+outline_size = 4
+outline_color = Color(0.82, 0.82, 0.82, 1)
+shadow_size = 3
+shadow_color = Color(0.355314, 0.355314, 0.355314, 0.862745)
+shadow_offset = Vector2(3, 3)
+
 [sub_resource type="Resource" id="Resource_vaxfo"]
 script = ExtResource("3_lfrn8")
 prefab = ExtResource("4_2a8rs")
@@ -96,15 +105,6 @@ max_spawn_amount = 1
 prefill = false
 metadata/_custom_type_script = "uid://bgb7upm6p5q20"
 
-[sub_resource type="LabelSettings" id="LabelSettings_8b66f"]
-font = ExtResource("16_gc57s")
-font_size = 31
-outline_size = 4
-outline_color = Color(0.82, 0.82, 0.82, 1)
-shadow_size = 3
-shadow_color = Color(0.355314, 0.355314, 0.355314, 0.862745)
-shadow_offset = Vector2(3, 3)
-
 [sub_resource type="Shader" id="Shader_vaxfo"]
 code = "shader_type canvas_item;
 
@@ -168,21 +168,6 @@ script = ExtResource("3_uyinl")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 
-[node name="DecorationSpawner" type="Node2D" parent="Game"]
-position = Vector2(0, 400)
-script = ExtResource("3_0sr1o")
-bounds_x = 500.0
-slots = 5
-obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
-
-[node name="ObstacleSpawner" type="Node2D" parent="Game"]
-position = Vector2(0, 400)
-script = ExtResource("3_0sr1o")
-bounds_x = 500.0
-obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj"), SubResource("Resource_pg2xm")])
-
-[node name="AirBalloon" parent="Game" instance=ExtResource("2_0sr1o")]
-
 [node name="Tutorial" type="Node2D" parent="Game"]
 script = ExtResource("15_10c2w")
 destroy_bounds = -1000.0
@@ -202,6 +187,21 @@ scale = Vector2(2, 2)
 text = "Blow to
 Move"
 label_settings = SubResource("LabelSettings_8b66f")
+
+[node name="DecorationSpawner" type="Node2D" parent="Game"]
+position = Vector2(0, 400)
+script = ExtResource("3_0sr1o")
+bounds_x = 500.0
+slots = 5
+obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_vaxfo"), SubResource("Resource_ftsea"), SubResource("Resource_otnwt"), SubResource("Resource_3xj4h")])
+
+[node name="ObstacleSpawner" type="Node2D" parent="Game"]
+position = Vector2(0, 400)
+script = ExtResource("3_0sr1o")
+bounds_x = 500.0
+obstacles = Array[ExtResource("3_lfrn8")]([SubResource("Resource_kp23o"), SubResource("Resource_5jirj"), SubResource("Resource_pg2xm")])
+
+[node name="AirBalloon" parent="Game" instance=ExtResource("2_0sr1o")]
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 5
