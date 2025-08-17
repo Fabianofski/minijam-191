@@ -4,7 +4,9 @@ extends Control
 
 @onready var label: Label = $BlowStrenghtLabel
 @onready var devices: OptionButton = $OptionButton
-@onready var slider: HSlider = $HSlider
+@onready var slider: HSlider = $OutputSlider
+@onready var threshold_slider: HSlider = $ThresholdSlider
+@onready var amplify_slider: HSlider = $AmpliSlider 
 
 func _ready() -> void:
 	update_device_list()
@@ -18,6 +20,9 @@ func update_device_list():
 	devices.clear()
 	for device in AudioServer.get_input_device_list(): 
 		devices.add_item(device)
+
+	threshold_slider.value = MicControl.threshold
+	amplify_slider.value = MicControl.amplify
 
 func select_device(device_idx: int): 
 	var device_name = AudioServer.get_input_device_list()[device_idx]

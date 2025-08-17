@@ -26,6 +26,7 @@ texture = ExtResource("2_pvhe3")
 [node name="Plane" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_pvhe3")
 autoplay = true
+bus = &"Sound"
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(-20, 57)

@@ -1,7 +1,7 @@
 extends Node
 
 
-var playback:AudioStreamPlaybackPolyphonic
+var playback: AudioStreamPlaybackPolyphonic
 
 
 func _enter_tree() -> void:
@@ -24,9 +24,10 @@ func _on_node_added(node:Node) -> void:
 
 
 func _play_hover() -> void:
-	pass
-	playback.play_stream(preload('res://shared/audio/hover.wav'), 0, 0, randf_range(0.9, 1))
+	var playback_type = AudioServer.PlaybackType.PLAYBACK_TYPE_DEFAULT
+	playback.play_stream(preload('res://shared/audio/hover.wav'), 0, 0, randf_range(0.9, 1), playback_type, &"Sound")
 
 
 func _play_pressed() -> void:
-	playback.play_stream(preload('res://shared/audio/button_press.wav'))
+	var playback_type = AudioServer.PlaybackType.PLAYBACK_TYPE_DEFAULT
+	playback.play_stream(preload('res://shared/audio/button_press.wav'), 0, 0, 1, playback_type, &"Sound")

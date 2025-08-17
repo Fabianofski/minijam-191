@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c25jbsd2glt0x"]
+[gd_scene load_steps=13 format=3 uid="uid://c25jbsd2glt0x"]
 
 [ext_resource type="Script" uid="uid://b6d667r20vp3d" path="res://scenes/game/play_menu/play_screen.gd" id="1_cvle8"]
 [ext_resource type="PackedScene" uid="uid://2yc3fqjjaygw" path="res://scenes/game/mic_control/mic_control_menu.tscn" id="2_fvdyv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="3_ym4uu"]
 [ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="4_qbabx"]
 [ext_resource type="LabelSettings" uid="uid://bbmhkpo6cvr0d" path="res://shared/fonts/paragraph_label.tres" id="5_ym4uu"]
+[ext_resource type="PackedScene" uid="uid://cm1btb8ud576w" path="res://scenes/game/settings_menu/settings.tscn" id="8_qbabx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
 texture = ExtResource("2_wi6ki")
@@ -48,21 +49,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Title"]
+[node name="StartBtn" type="Button" parent="Title"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -130.0
+offset_top = -192.0
 offset_right = 144.0
-offset_bottom = -78.0
+offset_bottom = -140.0
 grow_vertical = 0
 theme = SubResource("Theme_awmtd")
 text = "
 "
 
-[node name="Label" type="Label" parent="Title/Button"]
+[node name="Label" type="Label" parent="Title/StartBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,7 +81,39 @@ label_settings = SubResource("LabelSettings_vtnls")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="Title"]
+[node name="SettingsBtn" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -132.0
+offset_right = 178.0
+offset_bottom = -80.0
+grow_vertical = 0
+theme = SubResource("Theme_awmtd")
+text = "
+"
+
+[node name="Label" type="Label" parent="Title/SettingsBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_vtnls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MicBtn" type="Button" parent="Title"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -92,7 +125,7 @@ offset_bottom = -16.0
 grow_vertical = 0
 theme = SubResource("Theme_awmtd")
 
-[node name="Label" type="Label" parent="Title/Button2"]
+[node name="Label" type="Label" parent="Title/MicBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,11 +178,23 @@ layout_mode = 0
 offset_top = 0.0
 offset_bottom = 23.0
 
-[connection signal="pressed" from="Title/Button" to="." method="start_game"]
-[connection signal="pressed" from="Title/Button2" to="MicControlMenu" method="update_device_list"]
-[connection signal="pressed" from="Title/Button2" to="Title" method="set_visible" binds= [false]]
-[connection signal="pressed" from="Title/Button2" to="MicControlMenu" method="set_visible" binds= [true]]
+[node name="Settings" parent="." instance=ExtResource("8_qbabx")]
+layout_mode = 1
+offset_left = -194.0
+offset_top = -100.0
+offset_right = 194.0
+offset_bottom = 100.0
+
+[connection signal="pressed" from="Title/StartBtn" to="." method="start_game"]
+[connection signal="pressed" from="Title/SettingsBtn" to="Settings" method="update_sliders"]
+[connection signal="pressed" from="Title/SettingsBtn" to="Title" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Title/SettingsBtn" to="Settings" method="set_visible" binds= [true]]
+[connection signal="pressed" from="Title/MicBtn" to="MicControlMenu" method="update_device_list"]
+[connection signal="pressed" from="Title/MicBtn" to="Title" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Title/MicBtn" to="MicControlMenu" method="set_visible" binds= [true]]
 [connection signal="pressed" from="MicControlMenu/Button" to="Title" method="set_visible" binds= [true]]
 [connection signal="pressed" from="MicControlMenu/Button" to="MicControlMenu" method="set_visible" binds= [false]]
+[connection signal="pressed" from="Settings/Button" to="Title" method="set_visible" binds= [true]]
 
 [editable path="MicControlMenu"]
+[editable path="Settings"]

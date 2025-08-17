@@ -23,23 +23,23 @@ font = ExtResource("2_ql6m3")
 [sub_resource type="LabelSettings" id="LabelSettings_jb7qn"]
 font = ExtResource("2_ql6m3")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ym4uu"]
 texture = ExtResource("2_yl0kg")
 texture_margin_left = 24.0
 texture_margin_top = 29.0
 texture_margin_right = 24.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6txxq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbabx"]
 texture = ExtResource("3_ql6m3")
 texture_margin_left = 24.0
 texture_margin_top = 29.0
 texture_margin_right = 24.0
 
 [sub_resource type="Theme" id="Theme_jb7qn"]
-Button/styles/focus = SubResource("StyleBoxTexture_r0pju")
-Button/styles/hover = SubResource("StyleBoxTexture_6txxq")
-Button/styles/normal = SubResource("StyleBoxTexture_r0pju")
-Button/styles/pressed = SubResource("StyleBoxTexture_6txxq")
+Button/styles/focus = SubResource("StyleBoxTexture_ym4uu")
+Button/styles/hover = SubResource("StyleBoxTexture_qbabx")
+Button/styles/normal = SubResource("StyleBoxTexture_ym4uu")
+Button/styles/pressed = SubResource("StyleBoxTexture_qbabx")
 
 [sub_resource type="LabelSettings" id="LabelSettings_47e23"]
 font = ExtResource("4_sbatb")
@@ -80,7 +80,7 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="OutputSlider" type="HSlider" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,7 +96,7 @@ grow_vertical = 2
 editable = false
 scrollable = false
 
-[node name="Label" type="Label" parent="HSlider"]
+[node name="Label" type="Label" parent="OutputSlider"]
 layout_mode = 0
 offset_top = -20.0
 offset_right = 82.0

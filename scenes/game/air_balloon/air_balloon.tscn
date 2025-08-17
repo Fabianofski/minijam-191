@@ -280,13 +280,16 @@ speed = 200.0
 stream = ExtResource("2_xwiuu")
 volume_db = -9.563
 autoplay = true
+bus = &"Sound"
 
 [node name="Pop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_xe7hi")
+bus = &"Sound"
 
 [node name="Die" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0ke65")
 volume_db = 8.368
+bus = &"Sound"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
