@@ -70,6 +70,7 @@ func pop_balloon():
 	pop_sound.play()
 
 func fall_down(): 
+	balloon_shader.material.set_shader_parameter("speed", 2.0)
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "position", Vector2(position.x, 1000), 1.5)
