@@ -26,6 +26,7 @@ MicControl="*res://scenes/game/mic_control/mic_control.tscn"
 SignalBus="*res://shared/signal_bus.gd"
 GameManager="*res://scenes/game/game_manager.gd"
 UiPlayback="*res://shared/audio/ui_playback.gd"
+JukeBox="*res://shared/audio/juke_box.tscn"
 
 [display]
 
