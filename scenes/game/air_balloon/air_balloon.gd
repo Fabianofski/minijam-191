@@ -12,6 +12,7 @@ var diff: Vector2
 @onready var fire: Node2D = $basket/fire
 @onready var pop_sound: AudioStreamPlayer2D = $Pop
 @onready var burner_sound: AudioStreamPlayer2D = $Burner
+@onready var die_sound: AudioStreamPlayer2D = $Die
 
 @onready var balloon_shadow_control: Node2D = $Shadow/balloon
 @onready var balloon_shadow_graphics: AnimatedSprite2D = $Shadow/balloon/balloon_graphics
@@ -76,6 +77,7 @@ func pop_balloon():
 	pop_sound.play()
 
 func fall_down(): 
+	die_sound.play()
 	balloon_shader.material.set_shader_parameter("speed", 2.0)
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
