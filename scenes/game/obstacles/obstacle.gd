@@ -14,8 +14,8 @@ extends Node2D
 @onready var sprite = $Sprite2D
 @onready var shadow = $Shadow
 
-var colours: Array = [Color.WHITE, Color("#e64539"), Color("#c8d45d"),
-Color("#ba2fcc"), Color("#ff8933"), Color("#ffee83")] # White, red, green, purple. orange, yellow
+var colours: Array = [Color.WHITE, Color("#ff8383"), Color("#84ff83"),
+Color("#b783ff"), Color("#ffc283"), Color("#ffee83")] # White, red, green, purple. orange, yellow
 
 func _ready():
 	if randomize_speed:
