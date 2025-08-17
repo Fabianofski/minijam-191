@@ -1,10 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctk44t6j570tc"]
+[gd_scene load_steps=11 format=3 uid="uid://ctk44t6j570tc"]
 
 [ext_resource type="Script" uid="uid://bidpdj8tsjkdj" path="res://scenes/game/lose_screen/lose.gd" id="1_o1skj"]
 [ext_resource type="LabelSettings" uid="uid://cr0r7nn134qxd" path="res://shared/fonts/title_labels.tres" id="2_wcv5r"]
 [ext_resource type="Texture2D" uid="uid://karg46wlpnyn" path="res://scenes/game/lose_screen/btn_0.png" id="3_sqqk8"]
 [ext_resource type="Texture2D" uid="uid://41efs6tdxvhh" path="res://scenes/game/lose_screen/btn_1.png" id="4_c1g0d"]
 [ext_resource type="FontFile" uid="uid://dyp0j5gh3j3r" path="res://shared/fonts/DeliusUnicase-Regular.ttf" id="5_c1g0d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1g0d"]
+font = ExtResource("5_c1g0d")
+font_size = 24
+font_color = Color(0.572549, 0.909804, 0.752941, 1)
+outline_size = 2
+outline_color = Color(0.572549, 0.909804, 0.752941, 1)
+shadow_size = 3
+shadow_color = Color(0.355314, 0.355314, 0.355314, 0.862745)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
 texture = ExtResource("3_sqqk8")
@@ -46,7 +56,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.21, 0.21, 0.34902)
+color = Color(0.3096, 0.64476, 0.72, 0.501961)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -61,8 +71,25 @@ offset_right = 123.5
 offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "YOU LOST"
+text = "You fell for 1234 metres"
 label_settings = ExtResource("2_wcv5r")
+horizontal_alignment = 1
+
+[node name="High Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = -25.0
+offset_right = 367.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "And yes! It's a high score."
+label_settings = SubResource("LabelSettings_c1g0d")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
@@ -73,9 +100,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -90.0
-offset_top = 26.0
+offset_top = 42.0
 offset_right = 91.0
-offset_bottom = 77.0
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qdu62")
@@ -89,11 +116,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -83.5
 offset_top = -15.5
-offset_right = 81.5
+offset_right = 82.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Restart"
+text = "Try Again"
 label_settings = SubResource("LabelSettings_qdu62")
 horizontal_alignment = 1
 vertical_alignment = 1
