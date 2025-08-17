@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not GameManager.game_started:
 		return
-	time_elapsed += (delta * GameManager.current_speed * GameManager.vertical_blow) / 10
+	time_elapsed += (delta * GameManager.current_speed * GameManager.vertical_blow) / 100
 	update_label()
 
 func update_label(): 
