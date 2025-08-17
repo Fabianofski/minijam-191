@@ -8,13 +8,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not GameManager.game_started:
 		return
-	time_elapsed += delta
+	time_elapsed += (delta * GameManager.current_speed * GameManager.vertical_blow) / 10
 	update_label()
 
 func update_label(): 
-	var seconds = roundi(time_elapsed) % 60
-	var minutes = roundi(time_elapsed / 60) 
-	self.text = str(minutes)+"'"+str(seconds)+"''"
+	self.text = "%dm" % time_elapsed
 
 func game_started():
 	self.visible = true
