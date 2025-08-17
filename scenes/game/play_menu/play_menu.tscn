@@ -9,23 +9,23 @@
 [ext_resource type="LabelSettings" uid="uid://bbmhkpo6cvr0d" path="res://shared/fonts/paragraph_label.tres" id="5_ym4uu"]
 [ext_resource type="PackedScene" uid="uid://cm1btb8ud576w" path="res://scenes/game/settings_menu/settings.tscn" id="8_qbabx"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbabx"]
 texture = ExtResource("2_wi6ki")
 texture_margin_left = 24.0
 texture_margin_top = 29.0
 texture_margin_right = 24.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6txxq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0pju"]
 texture = ExtResource("3_ym4uu")
 texture_margin_left = 24.0
 texture_margin_top = 29.0
 texture_margin_right = 24.0
 
 [sub_resource type="Theme" id="Theme_awmtd"]
-Button/styles/focus = SubResource("StyleBoxTexture_r0pju")
-Button/styles/hover = SubResource("StyleBoxTexture_6txxq")
-Button/styles/normal = SubResource("StyleBoxTexture_r0pju")
-Button/styles/pressed = SubResource("StyleBoxTexture_6txxq")
+Button/styles/focus = SubResource("StyleBoxTexture_qbabx")
+Button/styles/hover = SubResource("StyleBoxTexture_r0pju")
+Button/styles/normal = SubResource("StyleBoxTexture_qbabx")
+Button/styles/pressed = SubResource("StyleBoxTexture_r0pju")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtnls"]
 font = ExtResource("4_qbabx")

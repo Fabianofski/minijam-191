@@ -6,6 +6,9 @@ var game_started: bool = false
 var distance_travelled: float = 0
 var highscore: float = 0
 
+func _ready() -> void:
+	highscore = SaveManager.load_from_file()
+
 func _process(delta: float) -> void:
 	if not game_started: 
 		return
@@ -21,5 +24,6 @@ func start_game():
 func reset():
 	if distance_travelled > highscore: 
 		highscore = distance_travelled
+		SaveManager.save_to_file(highscore)
 	game_started = false 
 	current_speed = 0

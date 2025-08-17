@@ -31,6 +31,7 @@ SignalBus="*res://shared/signal_bus.gd"
 GameManager="*res://scenes/game/game_manager.gd"
 UiPlayback="*res://shared/audio/ui_playback.gd"
 JukeBox="*res://shared/audio/juke_box.tscn"
+SaveManager="*res://shared/save_manager.gd"
 
 [display]
 
