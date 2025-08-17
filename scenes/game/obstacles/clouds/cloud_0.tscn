@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqkp8hh1a05lm" path="res://scenes/game/obstacles/balloon/obstacle_balloon_spr.png" id="2_4pevx"]
 [ext_resource type="Texture2D" uid="uid://csfw33eeqgb55" path="res://scenes/game/obstacles/clouds/cloud_0.png" id="2_dvdf1"]
 
-[node name="Obstacle" type="Node2D"]
+[node name="Obstacle3" type="Node2D"]
 script = ExtResource("1_lr08q")
 destroy_bounds = -500.0
 destroy_bounds_x = 800.0

@@ -2,6 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://df2edejk6rln2" path="res://scenes/game/obstacles/obstacle.tscn" id="1_5bs68"]
 
-[node name="Obstacle" instance=ExtResource("1_5bs68")]
+[node name="Obstacle3" instance=ExtResource("1_5bs68")]
 speed_multiplier = Vector2(0.1, 1)
 randomize_flip = true

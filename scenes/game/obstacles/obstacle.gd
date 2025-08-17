@@ -39,7 +39,9 @@ func _ready():
 	if randomize_y: 
 		randomize_y_pos()
 	if randomize_colour:
-		sprite.self_modulate = colours.pick_random()
+		var colour = colours.pick_random()
+		sprite.self_modulate = colour
+		$"Sprite2D/AnimatedSprite2D".self_modulate = colour
 	# Set shadow to match sprite
 	if shadow:
 		shadow.scale = sprite.scale
