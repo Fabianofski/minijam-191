@@ -35,8 +35,9 @@ func _ready():
 	if randomize_y: 
 		randomize_y_pos()
 	# Set shadow to match sprite
-	shadow.scale = sprite.scale
-	shadow.scale.x = sprite.scale.x
+	if shadow:
+		shadow.scale = sprite.scale
+		shadow.scale.x = sprite.scale.x
 
 func randomize_y_pos(): 
 	global_position.y = randf_range(global_position.y, destroy_bounds)
