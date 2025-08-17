@@ -17,6 +17,7 @@ var diff: Vector2
 @onready var balloon_shadow_control: Node2D = $Shadow/balloon
 @onready var balloon_shadow_graphics: AnimatedSprite2D = $Shadow/balloon/balloon_graphics
 @onready var wind_graphics: Node2D = $wind
+@onready var wind_sprite: AnimatedSprite2D = $wind/Sprite2D
 @onready var basket_shadow: Node2D = $Shadow/basket
 
 @onready var line_l: Line2D = $LineL
@@ -61,7 +62,8 @@ func rotate_and_move(delta: float):
 	fire.rotation_degrees = basket_graphics.rotation_degrees * -1
 
 	wind_graphics.rotation_degrees = rad_to_deg(diff.angle()) - 90 
-	wind_graphics.visible = blow_strength > 0
+	if blow_strength > 0 and wind_sprite.is_playing() == false:
+		wind_sprite.play("default")
 
 func set_visual_parameters(): 
 	line_l.set_point_position(0, line_l.to_local(attach_l_2.global_position))
