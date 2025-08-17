@@ -11,7 +11,9 @@ script = ExtResource("1_2vbuu")
 stream = ExtResource("2_tjlxh")
 volume_db = -80.0
 bus = &"Music"
+parameters/looping = true
 
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ohrqp")
 bus = &"Music"
+parameters/looping = true
