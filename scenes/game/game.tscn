@@ -1,6 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccx0v61gy2iva"]
+[gd_scene load_steps=32 format=3 uid="uid://ccx0v61gy2iva"]
 
+[ext_resource type="Script" uid="uid://cv22avya3bbke" path="res://shared/jukebox.gd" id="1_pg2xm"]
 [ext_resource type="PackedScene" uid="uid://o1jhpwkep6qb" path="res://scenes/game/air_balloon/air_balloon.tscn" id="2_0sr1o"]
+[ext_resource type="AudioStream" uid="uid://g8ap87g8ilt4" path="res://shared/audio/menu.ogg" id="2_gc57s"]
 [ext_resource type="FontFile" uid="uid://j0gptsyrjoyg" path="res://shared/fonts/Lexend-Black.ttf" id="2_otnwt"]
 [ext_resource type="Script" uid="uid://xwmbvvw1e1nt" path="res://scenes/game/obstacles/obstacle_spawner.gd" id="3_0sr1o"]
 [ext_resource type="Script" uid="uid://bgb7upm6p5q20" path="res://scenes/game/obstacles/obstacle_res.gd" id="3_lfrn8"]
@@ -117,6 +119,18 @@ shader = SubResource("Shader_vaxfo")
 shader_parameter/opacity = 1.4
 
 [node name="Root" type="Node2D"]
+
+[node name="JukeBox" type="Node2D" parent="."]
+script = ExtResource("1_pg2xm")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="JukeBox"]
+stream = ExtResource("2_gc57s")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="JukeBox"]
+stream = ExtResource("2_gc57s")
+bus = &"Music"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1

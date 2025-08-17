@@ -28,5 +28,5 @@ bus/4/name = &"Music"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = 0.0
+bus/4/volume_db = -7.63072
 bus/4/send = &"Master"
