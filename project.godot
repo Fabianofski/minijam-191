@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.309712, 0.63946, 0.717632, 1)
 boot_splash/fullsize=false
 boot_splash/image="uid://cp212pyxswhar"
+config/icon="uid://dt5ll1eittct6"
 
 [audio]
 
