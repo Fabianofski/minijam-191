@@ -65,7 +65,7 @@ func set_visual_parameters():
 	if GameManager.game_started:
 		var blow = MicControl.get_blow_strength()
 		burner_sound.volume_linear = blow
-		fire.visible = blow != 0
+		fire.scale = Vector2(blow, blow)
 	else:
 		burner_sound.volume_linear = 0.1
 
