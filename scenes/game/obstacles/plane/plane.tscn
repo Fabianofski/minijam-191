@@ -10,7 +10,7 @@ height = 842.0
 
 [node name="Obstacle" instance=ExtResource("1_jrhtp")]
 destroy_bounds_x = 1000.0
-speed_multiplier = Vector2(200, 1)
+speed_multiplier = Vector2(4, 1)
 randomize_flip = true
 start_on_the_sides = true
 

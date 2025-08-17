@@ -20,7 +20,7 @@ animations = [{
 }]
 
 [node name="Obstacle" instance=ExtResource("1_vth8d")]
-speed_multiplier = Vector2(50, 1)
+speed_multiplier = Vector2(1, 1)
 randomize_flip = true
 randomize_colour = true
 

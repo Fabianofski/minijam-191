@@ -50,7 +50,7 @@ func randomize_y_pos():
 
 func _process(delta: float) -> void:
 	position.y -= delta * GameManager.current_speed * speed_multiplier.y * GameManager.vertical_blow
-	position.x -= delta * speed_multiplier.x 
+	position.x -= delta * speed_multiplier.x * (GameManager.current_speed if GameManager.game_started else 80.0)
 
 	if global_position.y <= destroy_bounds: 
 		queue_free()
