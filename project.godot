@@ -14,6 +14,8 @@ config/name="Blown Away"
 config/version="1.0"
 run/main_scene="uid://ccx0v61gy2iva"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.309712, 0.63946, 0.717632, 1)
+boot_splash/image="uid://cp212pyxswhar"
 
 [audio]
 
